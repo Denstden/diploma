@@ -1,3 +1,5 @@
+import generator.Generator;
+
 public class Main {
     /**PROGRAM ARGUMENTS
      *<mod> <config_file>

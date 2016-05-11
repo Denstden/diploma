@@ -1,131 +1,14 @@
+package parser;
+
+import exception.WrongDataQuestionException;
+import format.FormatType;
+import parser.parsed_data.*;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-abstract class ParsedData{
-    public String preambula;
-    public FormatSettings formatSettings;
-    public abstract void print();
-}
-
-
-class ParsedDataType1 extends ParsedData{
-    public int col_answers;
-    public int col_pos_answers;
-    public int col_neg_answers;
-    public String[] answ_pos;
-    public String[] answ_neg;
-
-    public ParsedDataType1(){
-        formatSettings= new FormatSettings();
-    }
-
-    @Override
-    public void print() {
-        System.out.println("PRINT PARSED DATA TYPE 1");
-        System.out.println(preambula+"\n"+col_answers+"\n"+col_pos_answers+"\n"+col_neg_answers);
-        for (String s:answ_pos){
-            System.out.print(s + " ");
-        }
-        System.out.println();
-        for (String s:answ_neg){
-            System.out.print(s + " ");
-        }
-        System.out.println();
-    }
-}
-
-
-class ParsedDataType2 extends ParsedData{
-    public String correctAnswer;
-    public String[] answers;
-
-    public ParsedDataType2(){formatSettings = new FormatSettings();}
-
-    @Override
-    public void print(){
-        System.out.println("PRINT PARSED DATA TYPE 2");
-        System.out.println(preambula);
-        System.out.println();
-    }
-}
-
-
-class ParsedDataType3 extends ParsedData{
-
-    public ParsedDataType3(){formatSettings = new FormatSettings();}
-
-    @Override
-    public void print() {
-        System.out.println("PRINT PARSED DATA TYPE 3");
-        System.out.println(preambula);
-        System.out.println();
-    }
-}
-
-
-class ParsedDataType4 extends ParsedData{
-    public int col_answers;
-    public String answ_pos;
-    public String[] answ_neg;
-
-    public ParsedDataType4(){formatSettings = new FormatSettings();}
-
-    @Override
-    public void print() {
-        System.out.println("PRINT PARSED DATA TYPE 4");
-        System.out.println(preambula+"\n"+col_answers);
-        System.out.println(answ_pos);
-        for (String s:answ_neg){
-            System.out.print(s + " ");
-        }
-        System.out.println();
-    }
-}
-
-
-class AnswersReaderType1{
-    private String fname;
-    private String[] answers;
-
-    public AnswersReaderType1(String filename)throws FileNotFoundException {
-        fname=filename;
-        read_answers();
-    }
-
-    private void read_answers() throws FileNotFoundException{
-        Scanner in = new Scanner(new File(fname));
-        ArrayList<String> list = new ArrayList<>();
-        while (in.hasNext()){
-            list.add(in.nextLine());
-        }
-        answers = new String[list.size()];
-        int i=0;
-        for (String s:list)
-            answers[i++]=s;
-        in.close();
-    }
-
-    public String[] getAnswers(){
-        return answers;
-    }
-}
-
-
-class ParsedDatas{
-    public LinkedList<ParsedData> parsedDataLinkedList;
-
-    public ParsedDatas(){
-        parsedDataLinkedList = new LinkedList<>();
-    }
-
-    public void  add(ParsedData parsedData){
-        parsedDataLinkedList.add(parsedData);
-    }
-}
-
-
-class Parser {
+public class Parser {
     private String source;
     private LinkedList<ParsedDatas> parsedDataListList;
     private Iterator<ParsedDatas> listIterator;
@@ -135,7 +18,7 @@ class Parser {
         parsedDataListList = new LinkedList<>();
     }
 
-    public void parse() throws FileNotFoundException, WrongDataQuestEx {
+    public void parse() throws FileNotFoundException, WrongDataQuestionException {
         Scanner in;
         String folderList[] = new File(source).list();
         for (String folder:folderList) {
@@ -167,7 +50,7 @@ class Parser {
         listIterator = parsedDataListList.iterator();
     }
 
-    private void parseQuestionType1(Scanner scanner, String folder) throws WrongDataQuestEx, FileNotFoundException {
+    private void parseQuestionType1(Scanner scanner, String folder) throws WrongDataQuestionException, FileNotFoundException {
         String f_pos, f_neg;
         ParsedDataType1 parsedDataType1 = new ParsedDataType1();
         try {
@@ -179,21 +62,21 @@ class Parser {
             f_neg = source+"\\"+folder+"\\" + scanner.next();
             String type = scanner.next();
             if (type.equals("column")) {
-                parsedDataType1.formatSettings.setType(format_type.COLUMN);
+                parsedDataType1.formatSettings.setType(FormatType.COLUMN);
                 parsedDataType1.formatSettings.setCount(0);
             } else if (type.equals("columns")) {
-                parsedDataType1.formatSettings.setType(format_type.COLUMNS);
+                parsedDataType1.formatSettings.setType(FormatType.COLUMNS);
                 parsedDataType1.formatSettings.setCount(scanner.nextInt());
             } else if (type.equals("row")) {
-                parsedDataType1.formatSettings.setType(format_type.ROW);
+                parsedDataType1.formatSettings.setType(FormatType.ROW);
                 parsedDataType1.formatSettings.setCount(0);
             } else if (type.equals("rows")) {
-                parsedDataType1.formatSettings.setType(format_type.ROWS);
+                parsedDataType1.formatSettings.setType(FormatType.ROWS);
                 parsedDataType1.formatSettings.setCount(scanner.nextInt());
             }
 
         } catch (Exception e) {
-            throw new WrongDataQuestEx();
+            throw new WrongDataQuestionException();
         }
         AnswersReaderType1 answersReader = new AnswersReaderType1(f_pos);
         parsedDataType1.answ_pos = answersReader.getAnswers();
@@ -206,7 +89,7 @@ class Parser {
 
         scanner.close();
     }
-    private void parseQuestionType2(Scanner scanner, String folder) throws FileNotFoundException, WrongDataQuestEx {
+    private void parseQuestionType2(Scanner scanner, String folder) throws FileNotFoundException, WrongDataQuestionException {
         String globalPreambula = "";
         String pathToInfo = scanner.nextLine();
         if (scanner.hasNext()) {
@@ -223,15 +106,15 @@ class Parser {
                 parsedDataType2.correctAnswer = in.nextLine();
                 String type = in.nextLine();
                 if (type.equals("column")) {
-                    parsedDataType2.formatSettings.setType(format_type.COLUMN);
+                    parsedDataType2.formatSettings.setType(FormatType.COLUMN);
                     parsedDataType2.formatSettings.setCount(0);
                 } else if (type.equals("row")) {
-                    parsedDataType2.formatSettings.setType(format_type.ROW);
+                    parsedDataType2.formatSettings.setType(FormatType.ROW);
                     parsedDataType2.formatSettings.setCount(0);
                 }
 
             } catch (Exception e) {
-                throw new WrongDataQuestEx();
+                throw new WrongDataQuestionException();
             }
             parsedDataType2.answers = new String[2];
             parsedDataType2.answers[0] = "Yes";
@@ -243,7 +126,7 @@ class Parser {
         scanner.close();
         in.close();
     }
-    private void parseQuestionType3(Scanner scanner, String folder) throws FileNotFoundException, WrongDataQuestEx {
+    private void parseQuestionType3(Scanner scanner, String folder) throws FileNotFoundException, WrongDataQuestionException {
         String globalPreambula = "";
         String pathToInfo = scanner.nextLine();
         if (scanner.hasNext()) {
@@ -260,7 +143,7 @@ class Parser {
                 parsedDataType3.preambula = globalPreambula+' '+in.nextLine();
                 parsedDataType3.formatSettings.setCount(Integer.valueOf(in.nextLine()));
             } catch (Exception e) {
-                throw new WrongDataQuestEx();
+                throw new WrongDataQuestionException();
             }
             parsedDatas.add(parsedDataType3);
         }
@@ -269,7 +152,7 @@ class Parser {
         scanner.close();
         in.close();
     }
-    private void parseQuestionType4(Scanner scanner, String folder) throws FileNotFoundException, WrongDataQuestEx {
+    private void parseQuestionType4(Scanner scanner, String folder) throws FileNotFoundException, WrongDataQuestionException {
         String f_pos, f_neg;
         ParsedDataType4 parsedDataType4= new ParsedDataType4();
         try {
@@ -279,21 +162,21 @@ class Parser {
             f_neg = source+"\\"+folder+"\\" + scanner.next();
             String type = scanner.next();
             if (type.equals("column")) {
-                parsedDataType4.formatSettings.setType(format_type.COLUMN);
+                parsedDataType4.formatSettings.setType(FormatType.COLUMN);
                 parsedDataType4.formatSettings.setCount(0);
             } else if (type.equals("columns")) {
-                parsedDataType4.formatSettings.setType(format_type.COLUMNS);
+                parsedDataType4.formatSettings.setType(FormatType.COLUMNS);
                 parsedDataType4.formatSettings.setCount(scanner.nextInt());
             } else if (type.equals("row")) {
-                parsedDataType4.formatSettings.setType(format_type.ROW);
+                parsedDataType4.formatSettings.setType(FormatType.ROW);
                 parsedDataType4.formatSettings.setCount(0);
             } else if (type.equals("rows")) {
-                parsedDataType4.formatSettings.setType(format_type.ROWS);
+                parsedDataType4.formatSettings.setType(FormatType.ROWS);
                 parsedDataType4.formatSettings.setCount(scanner.nextInt());
             }
 
         } catch (Exception e) {
-            throw new WrongDataQuestEx();
+            throw new WrongDataQuestionException();
         }
 
         Scanner scannerf = new Scanner(new File(f_pos));

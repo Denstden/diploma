@@ -1,43 +1,51 @@
+package control_struct;
+
+import builder.QuestionBuilder;
+import exception.WrongDataQuestionException;
+import parser.Parser;
+import parser.parsed_data.*;
+import question.*;
+
 import java.io.FileNotFoundException;
 
 
-class ControlStruct {
-    private Builder builder;
+public class ControlStruct {
+    private QuestionBuilder questionBuilder;
     private Parser parser;
 
-    public ControlStruct(String source) throws WrongDataQuestEx, FileNotFoundException {
+    public ControlStruct(String source) throws WrongDataQuestionException, FileNotFoundException {
         parser = new Parser(source);
         parser.parse();
-        builder = new Builder();
+        questionBuilder = new QuestionBuilder();
     }
 
-    public Question getNext() throws WrongDataQuestEx {
+    public AbstractQuestion getNext() throws WrongDataQuestionException {
         ParsedData parsedData = parser.getNextParsedData();
         if (parsedData==null){
             parser.setIter();
             parsedData =parser.getNextParsedData();
         }
         if (parsedData.getClass().equals(new ParsedDataType1().getClass()))
-            return builder.getQuestion((ParsedDataType1)parsedData);
+            return questionBuilder.getQuestion((ParsedDataType1)parsedData);
         else if (parsedData.getClass().equals(new ParsedDataType2().getClass()))
-            return builder.getQuestion((ParsedDataType2)parsedData);
+            return questionBuilder.getQuestion((ParsedDataType2)parsedData);
         else if (parsedData.getClass().equals(new ParsedDataType3().getClass()))
-            return builder.getQuestion((ParsedDataType3)parsedData);
+            return questionBuilder.getQuestion((ParsedDataType3)parsedData);
         else
-            return builder.getQuestion((ParsedDataType4)parsedData);
+            return questionBuilder.getQuestion((ParsedDataType4)parsedData);
     }
 
-    public ConcreteQuestionType1 getNextType1() throws WrongDataQuestEx {
+    public QuestionType1 getNextType1() throws WrongDataQuestionException {
         ParsedDataType1 parsedData = parser.getNextParsedDataType1();
         if (parsedData==null){
             parser.shuffle();
             parser.setIter();
             parsedData =parser.getNextParsedDataType1();
         }
-        return builder.getQuestion(parsedData);
+        return questionBuilder.getQuestion(parsedData);
     }
 
-    public ConcreteQuestionType2 getNextType2(){
+    public QuestionType2 getNextType2(){
         ParsedDataType2 parsedData = parser.getNextParsedDataType2();
         if (parsedData==null){
             parser.shuffle();
@@ -45,26 +53,26 @@ class ControlStruct {
             parsedData =parser.getNextParsedDataType2();
         }
 
-        return builder.getQuestion(parsedData);
+        return questionBuilder.getQuestion(parsedData);
     }
 
-    public ConcreteQuestionType3 getNextType3(){
+    public QuestionType3 getNextType3(){
         ParsedDataType3 parsedData = parser.getNextParsedDataType3();
         if (parsedData==null){
             parser.shuffle();
             parser.setIter();
             parsedData =parser.getNextParsedDataType3();
         }
-        return builder.getQuestion(parsedData);
+        return questionBuilder.getQuestion(parsedData);
     }
 
-    public ConcreteQuestionType4 getNextType4() throws WrongDataQuestEx {
+    public QuestionType4 getNextType4() throws WrongDataQuestionException {
         ParsedDataType4 parsedData = parser.getNextParsedDataType4();
         if (parsedData==null){
             parser.shuffle();
             parser.setIter();
             parsedData =parser.getNextParsedDataType4();
         }
-        return builder.getQuestion(parsedData);
+        return questionBuilder.getQuestion(parsedData);
     }
 }

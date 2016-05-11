@@ -1,8 +1,15 @@
+package variant;
+
+import exception.NoQuestionException;
+import exception.WrongDataQuestionException;
+import question.AbstractQuestion;
+import question.fabric.*;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 
-class VariantFabric {
+public class VariantFabric {
     private QF qf;
     private int count;
     private ArrayList<QuestionFabric> questionFabrics;
@@ -13,14 +20,14 @@ class VariantFabric {
     private int countQuestionType3;
     private int countQuestionType4;
 
-    public VariantFabric(String source, String variantPreambula, int count) throws FileNotFoundException, WrongDataQuestEx {
+    public VariantFabric(String source, String variantPreambula, int count) throws FileNotFoundException, WrongDataQuestionException {
         this.count = count;
         preambula = variantPreambula;
         countVariant = 1;
         qf = new QF(source);
     }
 
-    public VariantFabric(String source, String variantPreambula, int countQuestionType1, int countQuestionType2, int countQuestionType3, int countQuestionType4) throws FileNotFoundException, WrongDataQuestEx {
+    public VariantFabric(String source, String variantPreambula, int countQuestionType1, int countQuestionType2, int countQuestionType3, int countQuestionType4) throws FileNotFoundException, WrongDataQuestionException {
         this.countQuestionType1 = countQuestionType1;
         this.countQuestionType2 = countQuestionType2;
         this.countQuestionType3 = countQuestionType3;
@@ -35,10 +42,10 @@ class VariantFabric {
         questionFabrics.add(new QuestionFabricType4(source));
     }
 
-    public Variant gVariant() throws WrongDataQuestEx {
-        ArrayList<Question> arrayList= new ArrayList<>();
+    public Variant gVariant() throws WrongDataQuestionException{
+        ArrayList<AbstractQuestion> arrayList= new ArrayList<>();
         for (int i=0;i<count;i++){
-            Question question = qf.getQuestion();
+            AbstractQuestion question = qf.getQuestion();
             if (!arrayList.contains(question))
                 arrayList.add(question);
             else
@@ -47,8 +54,8 @@ class VariantFabric {
         return new Variant(Integer.toString(countVariant++), preambula, arrayList);
     }
 
-    public Variant getVariant() throws FileNotFoundException, NoQuestionEx, WrongDataQuestEx {
-        ArrayList<Question> arrayList= new ArrayList<>();
+    public Variant getVariant() throws FileNotFoundException, NoQuestionException, WrongDataQuestionException {
+        ArrayList<AbstractQuestion> arrayList= new ArrayList<>();
         for (int i=0;i< countQuestionType1;i++){
             arrayList.add(questionFabrics.get(0).getQuestion());
         }

@@ -1,3 +1,10 @@
+package generator;
+
+import exception.NoQuestionException;
+import exception.WrongDataQuestionException;
+import variant.Variant;
+import variant.VariantFabric;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -56,10 +63,10 @@ public class Generator {
                     catch (FileNotFoundException e){
                         e.printStackTrace();
                     }
-                    catch (WrongDataQuestEx e){
+                    catch (WrongDataQuestionException e){
                         System.out.println(e.getMessage());
                     }
-                    catch (NoQuestionEx e){
+                    catch (NoQuestionException e){
                         System.out.println(e.getMessage());
                     }
                     catch (IOException e){
@@ -79,7 +86,7 @@ public class Generator {
                     catch (FileNotFoundException e){
                         e.printStackTrace();
                     }
-                    catch (WrongDataQuestEx e){
+                    catch (WrongDataQuestionException e){
                         System.out.println(e.getMessage());
                     }
                     catch (IOException e){

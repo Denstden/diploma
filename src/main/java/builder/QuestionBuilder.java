@@ -1,9 +1,21 @@
+package builder;
+
+import exception.WrongDataQuestionException;
+import parser.parsed_data.ParsedDataType1;
+import parser.parsed_data.ParsedDataType2;
+import parser.parsed_data.ParsedDataType3;
+import parser.parsed_data.ParsedDataType4;
+import question.QuestionType1;
+import question.QuestionType2;
+import question.QuestionType3;
+import question.QuestionType4;
+
 import java.util.Random;
 
-class Builder {
+public class QuestionBuilder {
 
-    public ConcreteQuestionType1 getQuestion(ParsedDataType1 parsedData) throws WrongDataQuestEx {
-        ConcreteQuestionType1 question = new ConcreteQuestionType1();
+    public QuestionType1 getQuestion(ParsedDataType1 parsedData) throws WrongDataQuestionException {
+        QuestionType1 question = new QuestionType1();
 
         question.setQuestion(parsedData.preambula);
         question.setFormatSettings(parsedData.formatSettings);
@@ -15,7 +27,7 @@ class Builder {
         String[] answ_neg = parsedData.answ_neg;
 
         if (col_answers!=col_neg_answers+col_pos_answers)
-            throw new WrongDataQuestEx();
+            throw new WrongDataQuestionException();
 
         String [] answers=new String[col_answers];
         shuffleArray(answ_pos);
@@ -40,19 +52,19 @@ class Builder {
             }
 
             if (i != col_answers)
-                throw new WrongDataQuestEx();
+                throw new WrongDataQuestionException();
 
             shuffleArray(answers);
         }
         else
-            throw  new WrongDataQuestEx();
+            throw  new WrongDataQuestionException();
         question.setAnswers(answers);
         return  question;
     }
 
-    public ConcreteQuestionType2 getQuestion(ParsedDataType2 parsedData){
+    public QuestionType2 getQuestion(ParsedDataType2 parsedData){
 
-        ConcreteQuestionType2 question = new ConcreteQuestionType2();
+        QuestionType2 question = new QuestionType2();
 
         question.setQuestion(parsedData.preambula);
         question.setFormatSettings(parsedData.formatSettings);
@@ -61,9 +73,9 @@ class Builder {
         return question;
     }
 
-    public ConcreteQuestionType3 getQuestion(ParsedDataType3 parsedData){
+    public QuestionType3 getQuestion(ParsedDataType3 parsedData){
 
-        ConcreteQuestionType3 question = new ConcreteQuestionType3();
+        QuestionType3 question = new QuestionType3();
 
         question.setQuestion(parsedData.preambula);
         question.setFormatSettings(parsedData.formatSettings);
@@ -71,8 +83,8 @@ class Builder {
         return question;
     }
 
-    public ConcreteQuestionType4 getQuestion(ParsedDataType4 parsedData) throws WrongDataQuestEx {
-        ConcreteQuestionType4 question = new ConcreteQuestionType4();
+    public QuestionType4 getQuestion(ParsedDataType4 parsedData) throws WrongDataQuestionException {
+        QuestionType4 question = new QuestionType4();
 
         question.setQuestion(parsedData.preambula);
         question.setFormatSettings(parsedData.formatSettings);
@@ -96,7 +108,7 @@ class Builder {
         }
 
         if (i!=col_answers)
-            throw  new WrongDataQuestEx();
+            throw  new WrongDataQuestionException();
         shuffleArray(answers);
 
         question.setAnswers(answers);
