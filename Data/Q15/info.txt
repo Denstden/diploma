@@ -1,0 +1,9 @@
+a+b=b+a
++
+row
+a+(b+c)=(a+b)+c
++
+row
+a-b+c=a-(b+c)
+-
+column

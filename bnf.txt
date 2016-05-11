@@ -1,0 +1,47 @@
+<variant>::=<list_of_questions>
+  <list_of_questions>::=<question>|<question><list_of_questions>
+    <question>::=<question_type_1>|<question_type_2>|..
+        <question_type_1>::=<preambula>
+                            <count_answers>
+                            <count_correct_answers>
+                            <count_uncorrect_answers>
+                            <source_correct_answers>
+                            <source_uncorrect_answers>
+                            <formating_elements>
+        <question_type_2>::=<preambula>
+                            <answer>
+                            <formating_elements>
+        <question_type_3>::=<preabmula>
+                            <formating_elements>
+        <question_type_4>::=<preambula>
+                            <count_answers>
+                            <source_correct_answers>
+                            <source_uncorrect_answers>
+                            <formating_elements>
+            <preambula>::=<sequence_of_words>"\n"
+               <sequence_of_words>::=<word><space><sequence_of_words>|<word>
+                  <word>::=<sequence_of_symbols>|<symbol>
+                  <space>::=" "
+                     <sequence_of_symbols>::=<symbol><sequence_of_symbols>|<symbol>
+                        <symbol>::=<letter>|<digit>|<special_symbol>
+                    <letter>::="a".."z"|"A".."Z"
+                    <digit>::="0".."9"
+                    <special_symbol>::='.'|','|'!'|'?'|'('|...
+            <count_answers>::=<number>"\n"
+               <number>::="0"|<not_zero_digit>|<not_zero_digit><digit>
+                  <not_zero_digit>::='0'|'1'|..|'9'
+            <count_correct_answers>::=<number>"\n"
+            <count_uncorrect_answers>::=<number>"\n"
+            <source_correct_answers>::=<path_to_file>"\n"
+            <source_uncorrect_answers>::=<path_to_file>"\n"
+               <path_to_file>::=<file_name>|<full_path><file_name>
+                  <file_name>::=<SLN>"."<expansion>
+                     <SLN>::=<letter><SLN>|<digit><SLN>|"_"<SLN>|<letter>|<digit>|"_"
+                     <expansion>::="txt"|...
+                  <full_path>::=<root>|<root><folder_sequens>
+                     <root>::=<upper_letter>":\"
+                    <upper_letter>::="A"|"B"|..|"Z"
+                     <folder_sequens>::=<SLN>"\"<folder_sequens>|<SLN>"\"
+            <formating_elements>::="row"|"rows\n"<number>|"column"|"columns\n"<number>
+            <answer>::="+"|"-"|"YES"|"NO"|"Yes"|"No"
+

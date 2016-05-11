@@ -1,0 +1,8 @@
+type1
+Quest3?
+3
+1
+2
++.txt
+-.txt
+row

@@ -1,0 +1,9 @@
+type1
+Quest10?
+8
+4
+4
++.txt
+-.txt
+rows
+4

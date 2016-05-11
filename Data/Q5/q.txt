@@ -1,0 +1,9 @@
+type1
+Quest5?
+8
+1
+7
++.txt
+-.txt
+columns
+4

@@ -1,0 +1,10 @@
+//comment
+type1
+Quest2?
+5
+4
+1
++.txt
+-.txt
+rows
+2
