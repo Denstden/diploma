@@ -2,6 +2,9 @@ package generator;
 
 import exception.NoQuestionException;
 import exception.WrongDataQuestionException;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import variant.Variant;
 import variant.VariantFabric;
 
@@ -11,6 +14,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Generator {
+    private static final Logger logger = LogManager.getLogger(Generator.class);
     private String[] args;
 
     public Generator(String[] args){
@@ -33,7 +37,7 @@ public class Generator {
             try {
                 in = new Scanner(new File(configSource));
             } catch (FileNotFoundException e) {
-                System.out.println("Config file does not found.");
+                logger.log(Level.ERROR,"Config file does not found.");
             }
             dataFolder = in.nextLine();
             resultFolder = in.nextLine();
@@ -43,7 +47,8 @@ public class Generator {
                 variantPreambula += in.nextLine()+"\r\n";
 
             if (resultFolder.contains("esult"))
-                deleteAllFilesFolder(resultFolder);
+                FolderCleaner.deleteAllFilesFolder(resultFolder);
+
 
             switch (mod){
                 case 1:{
@@ -61,16 +66,16 @@ public class Generator {
                         break;
                     }
                     catch (FileNotFoundException e){
-                        e.printStackTrace();
+                        logger.log(Level.ERROR,e.getMessage());
                     }
                     catch (WrongDataQuestionException e){
-                        System.out.println(e.getMessage());
+                        logger.log(Level.ERROR,e.getMessage());
                     }
                     catch (NoQuestionException e){
-                        System.out.println(e.getMessage());
+                        logger.log(Level.ERROR,e.getMessage());
                     }
                     catch (IOException e){
-                        e.printStackTrace();
+                        logger.log(Level.ERROR,e.getMessage());
                     }
                 }
                 case 2: {
@@ -84,13 +89,13 @@ public class Generator {
                         break;
                     }
                     catch (FileNotFoundException e){
-                        e.printStackTrace();
+                        logger.log(Level.ERROR,e.getMessage());
                     }
                     catch (WrongDataQuestionException e){
-                        System.out.println(e.getMessage());
+                        logger.log(Level.ERROR,e.getMessage());
                     }
                     catch (IOException e){
-                        e.printStackTrace();
+                        logger.log(Level.ERROR,e.getMessage());
                     }
                 }
 
@@ -98,11 +103,7 @@ public class Generator {
             }
         }
         else
-            System.out.println("Set correct program arguments.\n<mod> <configFileSource>");
+            logger.log(Level.ERROR,"Set correct program arguments.\n<mod> <configFileSource>");
     }
 
-    private void deleteAllFilesFolder(String path) {
-        for (File myFile : new File(path).listFiles())
-            if (myFile.isFile()) myFile.delete();
-    }
 }
