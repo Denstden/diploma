@@ -2,6 +2,8 @@
 */target/*
 .idea/*
 */gen/*
+*/Data/*
+*/Result/*
 
 *.classpath
 *.project
