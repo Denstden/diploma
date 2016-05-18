@@ -25,11 +25,11 @@ public class ControlStruct {
             parser.setIter();
             parsedData =parser.getNextParsedData();
         }
-        if (parsedData.getClass().equals(new ParsedDataType1().getClass()))
+        if (parsedData.getClass().equals(ParsedDataType1.class))
             return questionBuilder.getQuestion((ParsedDataType1)parsedData);
-        else if (parsedData.getClass().equals(new ParsedDataType2().getClass()))
+        else if (parsedData.getClass().equals(ParsedDataType2.class))
             return questionBuilder.getQuestion((ParsedDataType2)parsedData);
-        else if (parsedData.getClass().equals(new ParsedDataType3().getClass()))
+        else if (parsedData.getClass().equals(ParsedDataType3.class))
             return questionBuilder.getQuestion((ParsedDataType3)parsedData);
         else
             return questionBuilder.getQuestion((ParsedDataType4)parsedData);
