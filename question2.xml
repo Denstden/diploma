@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<questions>
+    <global_preambula>
+        Написати функцію, яка
+    </global_preambula>
+
+    <question_esse>
+        <hashtag>#binom_seq</hashtag>
+        <preambula>
+            друкує послiдовнiсть бiномних коефiцiєнтiв C(n+k,k), k=0,1,...,n
+        </preambula>
+        <format_elements>
+            <strategy>rows</strategy>
+            <count>2</count>
+        </format_elements>
+    </question_esse>
+
+    <question_esse>
+        <hashtag>#binom_seq</hashtag>
+        <preambula>
+            друкує послiдовнiсть бiномних коефiцiєнтiв C(2n+k,n+k), k=0,1,...,n
+        </preambula>
+        <format_elements>
+            <strategy>rows</strategy>
+            <count>2</count>
+        </format_elements>
+    </question_esse>
+
+    <question_esse>
+        <hashtag>#factiroal_seq</hashtag>
+        <preambula>
+            друкує послiдовнiсть (2k)!!/((k!)^{2}), k=1,...,n
+        </preambula>
+        <format_elements>
+            <strategy>rows</strategy>
+            <count>2</count>
+        </format_elements>
+    </question_esse>
+
+    <question_esse>
+        <hashtag>#factiroal_seq</hashtag>
+        <preambula>
+            друкує послiдовнiсть (2k)!!/(((k+1)!)((k-1)!)), k=2,...,n
+        </preambula>
+        <format_elements>
+            <strategy>rows</strategy>
+            <count>3</count>
+        </format_elements>
+    </question_esse>
+</questions>

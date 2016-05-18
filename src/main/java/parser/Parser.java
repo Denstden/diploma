@@ -54,7 +54,7 @@ public class Parser {
         String f_pos, f_neg;
         ParsedDataType1 parsedDataType1 = new ParsedDataType1();
         try {
-            parsedDataType1.preambula = scanner.nextLine();
+            parsedDataType1.setPreambula(scanner.nextLine());
             parsedDataType1.col_answers = scanner.nextInt();
             parsedDataType1.col_pos_answers = scanner.nextInt();
             parsedDataType1.col_neg_answers = scanner.nextInt();
@@ -62,17 +62,17 @@ public class Parser {
             f_neg = source+"\\"+folder+"\\" + scanner.next();
             String type = scanner.next();
             if (type.equals("column")) {
-                parsedDataType1.formatSettings.setType(FormatType.COLUMN);
-                parsedDataType1.formatSettings.setCount(0);
+                parsedDataType1.getFormatSettings().setType(FormatType.COLUMN);
+                parsedDataType1.getFormatSettings().setCount(0);
             } else if (type.equals("columns")) {
-                parsedDataType1.formatSettings.setType(FormatType.COLUMNS);
-                parsedDataType1.formatSettings.setCount(scanner.nextInt());
+                parsedDataType1.getFormatSettings().setType(FormatType.COLUMNS);
+                parsedDataType1.getFormatSettings().setCount(scanner.nextInt());
             } else if (type.equals("row")) {
-                parsedDataType1.formatSettings.setType(FormatType.ROW);
-                parsedDataType1.formatSettings.setCount(0);
+                parsedDataType1.getFormatSettings().setType(FormatType.ROW);
+                parsedDataType1.getFormatSettings().setCount(0);
             } else if (type.equals("rows")) {
-                parsedDataType1.formatSettings.setType(FormatType.ROWS);
-                parsedDataType1.formatSettings.setCount(scanner.nextInt());
+                parsedDataType1.getFormatSettings().setType(FormatType.ROWS);
+                parsedDataType1.getFormatSettings().setCount(scanner.nextInt());
             }
 
         } catch (Exception e) {
@@ -102,15 +102,15 @@ public class Parser {
         while (in.hasNext()){
             parsedDataType2 = new ParsedDataType2();
             try {
-                parsedDataType2.preambula = globalPreambula+' '+in.nextLine();
+                parsedDataType2.setPreambula(globalPreambula+' '+in.nextLine());
                 parsedDataType2.correctAnswer = in.nextLine();
                 String type = in.nextLine();
                 if (type.equals("column")) {
-                    parsedDataType2.formatSettings.setType(FormatType.COLUMN);
-                    parsedDataType2.formatSettings.setCount(0);
+                    parsedDataType2.getFormatSettings().setType(FormatType.COLUMN);
+                    parsedDataType2.getFormatSettings().setCount(0);
                 } else if (type.equals("row")) {
-                    parsedDataType2.formatSettings.setType(FormatType.ROW);
-                    parsedDataType2.formatSettings.setCount(0);
+                    parsedDataType2.getFormatSettings().setType(FormatType.ROW);
+                    parsedDataType2.getFormatSettings().setCount(0);
                 }
 
             } catch (Exception e) {
@@ -140,8 +140,8 @@ public class Parser {
             //parsedDatas = new ParsedDatas();
             parsedDataType3 = new ParsedDataType3();
             try {
-                parsedDataType3.preambula = globalPreambula+' '+in.nextLine();
-                parsedDataType3.formatSettings.setCount(Integer.valueOf(in.nextLine()));
+                parsedDataType3.setPreambula(globalPreambula+' '+in.nextLine());
+                parsedDataType3.getFormatSettings().setCount(Integer.valueOf(in.nextLine()));
             } catch (Exception e) {
                 throw new WrongDataQuestionException();
             }
@@ -156,23 +156,23 @@ public class Parser {
         String f_pos, f_neg;
         ParsedDataType4 parsedDataType4= new ParsedDataType4();
         try {
-            parsedDataType4.preambula = scanner.nextLine();
+            parsedDataType4.setPreambula(scanner.nextLine());
             parsedDataType4.col_answers = scanner.nextInt();
             f_pos = source+"\\"+folder+"\\" + scanner.next();
             f_neg = source+"\\"+folder+"\\" + scanner.next();
             String type = scanner.next();
             if (type.equals("column")) {
-                parsedDataType4.formatSettings.setType(FormatType.COLUMN);
-                parsedDataType4.formatSettings.setCount(0);
+                parsedDataType4.getFormatSettings().setType(FormatType.COLUMN);
+                parsedDataType4.getFormatSettings().setCount(0);
             } else if (type.equals("columns")) {
-                parsedDataType4.formatSettings.setType(FormatType.COLUMNS);
-                parsedDataType4.formatSettings.setCount(scanner.nextInt());
+                parsedDataType4.getFormatSettings().setType(FormatType.COLUMNS);
+                parsedDataType4.getFormatSettings().setCount(scanner.nextInt());
             } else if (type.equals("row")) {
-                parsedDataType4.formatSettings.setType(FormatType.ROW);
-                parsedDataType4.formatSettings.setCount(0);
+                parsedDataType4.getFormatSettings().setType(FormatType.ROW);
+                parsedDataType4.getFormatSettings().setCount(0);
             } else if (type.equals("rows")) {
-                parsedDataType4.formatSettings.setType(FormatType.ROWS);
-                parsedDataType4.formatSettings.setCount(scanner.nextInt());
+                parsedDataType4.getFormatSettings().setType(FormatType.ROWS);
+                parsedDataType4.getFormatSettings().setCount(scanner.nextInt());
             }
 
         } catch (Exception e) {

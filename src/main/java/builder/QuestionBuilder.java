@@ -17,8 +17,8 @@ public class QuestionBuilder {
     public QuestionType1 getQuestion(ParsedDataType1 parsedData) throws WrongDataQuestionException {
         QuestionType1 question = new QuestionType1();
 
-        question.setQuestion(parsedData.preambula);
-        question.setFormatSettings(parsedData.formatSettings);
+        question.setQuestion(parsedData.getPreambula());
+        question.setFormatSettings(parsedData.getFormatSettings());
 
         int col_answers = parsedData.col_answers;
         int col_neg_answers = parsedData.col_neg_answers;
@@ -66,8 +66,8 @@ public class QuestionBuilder {
 
         QuestionType2 question = new QuestionType2();
 
-        question.setQuestion(parsedData.preambula);
-        question.setFormatSettings(parsedData.formatSettings);
+        question.setQuestion(parsedData.getPreambula());
+        question.setFormatSettings(parsedData.getFormatSettings());
         question.setAnswers(parsedData.answers);
 
         return question;
@@ -77,8 +77,8 @@ public class QuestionBuilder {
 
         QuestionType3 question = new QuestionType3();
 
-        question.setQuestion(parsedData.preambula);
-        question.setFormatSettings(parsedData.formatSettings);
+        question.setQuestion(parsedData.getPreambula());
+        question.setFormatSettings(parsedData.getFormatSettings());
 
         return question;
     }
@@ -86,8 +86,8 @@ public class QuestionBuilder {
     public QuestionType4 getQuestion(ParsedDataType4 parsedData) throws WrongDataQuestionException {
         QuestionType4 question = new QuestionType4();
 
-        question.setQuestion(parsedData.preambula);
-        question.setFormatSettings(parsedData.formatSettings);
+        question.setQuestion(parsedData.getPreambula());
+        question.setFormatSettings(parsedData.getFormatSettings());
 
         int col_answers = parsedData.col_answers;
         String answ_pos = parsedData.answ_pos;

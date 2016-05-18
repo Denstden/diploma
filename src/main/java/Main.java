@@ -1,4 +1,10 @@
-import generator.Generator;
+import new_builder.TestBuilder;
+import new_parser2.ConfigDomParser;
+import new_parser2.config.test.TestConfigData;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 
 public class Main {
     /**PROGRAM ARGUMENTS
@@ -16,7 +22,16 @@ public class Main {
      *                <CountQuestionsType4>
      */
     public static void main(String[] args) {
-        Generator generator = new Generator(args);
-        generator.generate();
+
+        ConfigDomParser parser = new ConfigDomParser();
+        try {
+            TestConfigData testConfigData = parser.parse("config.xml");
+            //System.out.println(testConfigData);
+            TestBuilder testBuilder = new TestBuilder();
+            testBuilder.setTestConfigData(testConfigData);
+            testBuilder.build();
+        } catch (IOException | SAXException | ParserConfigurationException e) {
+            e.printStackTrace();
+        }
     }
 }

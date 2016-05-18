@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+    <test>
+        <result_source>
+            <path>home/result</path>
+        </result_source>
+        <count_variants>4</count_variants>
+        <test_header>
+            <line>Test 1</line>
+        </test_header>
+    </test>
+
+    <variant>
+        <variant_header>
+            <line>Name:</line>
+            <line>Group:</line>
+        </variant_header>
+        <variant_footer>
+            <line>Date:</line>
+        </variant_footer>
+        <points>3.5</points>
+        <questions>
+            <question>
+                <sources>
+                    <source>
+                        <question_source>question1.xml</question_source>
+                    </source>
+                </sources>
+                <!--<count>3</count>-->
+                <estimation>
+                    <mark>0.5</mark>
+                    <strategy>all_nothing</strategy>
+                </estimation>
+            </question>
+
+            <!--<question>
+                <sources>
+                    <source>
+                        <question_source>home/question22.ini</question_source>
+                        <count_questions>3</count_questions>
+                    </source>
+                    <source>
+                        <question_source>home/question41.ini</question_source>
+                        <count_questions>2</count_questions>
+                    </source>
+                </sources>-->
+                <!--<count>3</count>-->
+                <!--<estimation>
+                    <mark>1</mark>
+                    <strategy>evenly</strategy>
+                </estimation>
+            </question>-->
+
+            <question>
+                <sources>
+                    <source>
+                        <question_source>question2.xml</question_source>
+                    </source>
+                </sources>
+                <!--<count>2</count>-->
+                <estimation>
+                    <mark>2</mark>
+                    <strategy>all_nothing</strategy>
+                </estimation>
+            </question>
+
+        </questions>
+    </variant>
+</config>
