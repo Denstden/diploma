@@ -2,21 +2,21 @@ package question.builder;
 
 import question.format.FormatSettings;
 import question.format.FormatType;
-import question.EsseQuestion;
+import question.EssayQuestion;
 
 /**
  * @Author Denys Storozhenko.
  */
-public class EsseQuestionBuilder extends AbstractQuestionBuilder {
+public class EssayQuestionBuilder extends AbstractQuestionBuilder {
 
 	@Override
-	public EsseQuestion build() {
-		EsseQuestion esseQuestion = new EsseQuestion();
-		esseQuestion.setQuestion(globalPreambula+" "+configData.getPreambula());
+	public EssayQuestion build() {
+		EssayQuestion essayQuestion = new EssayQuestion();
+		essayQuestion.setQuestion(globalPreamble +" "+configData.getPreamble());
 		FormatSettings formatSettings = new FormatSettings();
 		formatSettings.setType(FormatType.valueOf(configData.getFormatElements().getFormatStrategy().name()));
 		formatSettings.setCount(configData.getFormatElements().getCount());
-		esseQuestion.setFormatSettings(formatSettings);
-		return esseQuestion;
+		essayQuestion.setFormatSettings(formatSettings);
+		return essayQuestion;
 	}
 }

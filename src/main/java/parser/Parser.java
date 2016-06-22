@@ -19,7 +19,7 @@ import parser.config.question.QuestionConfigData;
 import parser.config.question.QuestionData;
 import parser.config.question.question_types.AbstractQuestionConfigData;
 import parser.config.question.question_types.QuestionCheckboxConfigData;
-import parser.config.question.question_types.QuestionEsseConfigData;
+import parser.config.question.question_types.QuestionEssayConfigData;
 import parser.config.question.question_types.QuestionRadioButtonConfigData;
 import parser.config.question.question_types.QuestionYesNoConfigData;
 import parser.config.test.TestConfig;
@@ -121,7 +121,7 @@ public class Parser {
 			for (Element element : root.getChildren()) {
 				switch (element.getName()) {
 				case "global_preambula":
-					questionConfigData.setGlobalPreambula(element.getText().trim());
+					questionConfigData.setGlobalPreamble(element.getText().trim());
 					break;
 				case "question_checkbox":
 					configDatas.add(parseQuestionCheckboxConfigData(element));
@@ -130,7 +130,7 @@ public class Parser {
 					configDatas.add(parseQuestionRadioButtonConfigData(element));
 					break;
 				case "question_esse":
-					configDatas.add(parseQuestionEsseConfigData(element));
+					configDatas.add(parseQuestionEssayConfigData(element));
 					break;
 				case "question_yes_no":
 					configDatas.add(parseQuestionYesNoConfigData(element));
@@ -151,7 +151,7 @@ public class Parser {
 					configData.setHashTag(questionElement.getText());
 					break;
 				case "preambula":
-					configData.setPreambula(questionElement.getText());
+					configData.setPreamble(questionElement.getText());
 					break;
 				case "count_answers":
 					configData.
@@ -185,7 +185,7 @@ public class Parser {
 					configData.setHashTag(questionElement.getText());
 					break;
 				case "preambula":
-					configData.setPreambula(questionElement.getText().trim());
+					configData.setPreamble(questionElement.getText().trim());
 					break;
 				case "format_elements": {
 					configData.setFormatElements(parseFormatElements(questionElement));
@@ -196,15 +196,15 @@ public class Parser {
 			return configData;
 		}
 
-		private static QuestionEsseConfigData parseQuestionEsseConfigData(Element element) {
-			QuestionEsseConfigData configData = new QuestionEsseConfigData();
+		private static QuestionEssayConfigData parseQuestionEssayConfigData(Element element) {
+			QuestionEssayConfigData configData = new QuestionEssayConfigData();
 			for (Element questionElement : element.getChildren()) {
 				switch (questionElement.getName()) {
 				case "hashtag":
 					configData.setHashTag(questionElement.getText());
 					break;
 				case "preambula":
-					configData.setPreambula(questionElement.getText().trim());
+					configData.setPreamble(questionElement.getText().trim());
 					break;
 				case "format_elements": {
 					configData.setFormatElements(parseFormatElements(questionElement));
@@ -224,7 +224,7 @@ public class Parser {
 					configData.setHashTag(questionElement.getText());
 					break;
 				case "preambula":
-					configData.setPreambula(questionElement.getText());
+					configData.setPreamble(questionElement.getText());
 					break;
 				case "count_answers":
 					configData.

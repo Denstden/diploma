@@ -3,31 +3,33 @@ package parser.config.question.question_types;
 import parser.config.question.FormatElements;
 
 public abstract class AbstractQuestionConfigData {
-    protected FormatElements formatElements;
-    protected String preambula = "";
-    protected String hashTag;
+	protected FormatElements formatElements;
 
-    public FormatElements getFormatElements() {
-        return formatElements;
-    }
+	protected String preamble = "";
 
-    public void setFormatElements(FormatElements formatElements) {
-        this.formatElements = formatElements;
-    }
+	protected String hashTag;
 
-    public String getHashTag() {
-        return hashTag;
-    }
+	public FormatElements getFormatElements() {
+		return formatElements;
+	}
 
-    public void setHashTag(String hashTag) {
-        this.hashTag = hashTag;
-    }
+	public void setFormatElements(FormatElements formatElements) {
+		this.formatElements = formatElements;
+	}
 
-    public String getPreambula() {
-        return preambula;
-    }
+	public String getHashTag() {
+		return hashTag;
+	}
 
-    public void setPreambula(String preambula) {
-        this.preambula = preambula;
-    }
+	public void setHashTag(String hashTag) {
+		this.hashTag = hashTag;
+	}
+
+	public String getPreamble() {
+		return preamble;
+	}
+
+	public void setPreamble(String preamble) {
+		this.preamble = preamble;
+	}
 }

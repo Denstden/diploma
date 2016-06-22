@@ -1,20 +1,6 @@
 package question;
 
-import question.format.FormatSettings;
-
 public class CheckboxQuestion extends AbstractQuestion {
-
-    public void setQuestion(String question) {
-        this.question = question;
-    }
-
-    public void setAnswers(String[] answers) {
-        this.answers = answers;
-    }
-
-    public void setFormatSettings(FormatSettings formatSettings) {
-        this.formatSettings = formatSettings;
-    }
 
     @Override
     public void print(){
@@ -24,7 +10,7 @@ public class CheckboxQuestion extends AbstractQuestion {
     @Override
     public String toString() {
         String s = "";
-        s += question + "\r\n\t";
+        s += preamble + "\r\n\t";
         switch (formatSettings.getType()) {
         case COLUMNS: {
             int i;

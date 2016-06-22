@@ -5,7 +5,7 @@ import question.format.FormatSettings;
 public class YesNoQuestion extends AbstractQuestion {
 
     public void setQuestion(String question) {
-        this.question = question;
+        this.preamble = question;
     }
 
     public void setAnswers(String[] answers) {
@@ -24,7 +24,7 @@ public class YesNoQuestion extends AbstractQuestion {
     @Override
     public String toString() {
         String s = "";
-        s+=question+"\r\n\t";
+        s+= preamble +"\r\n\t";
         switch (formatSettings.getType()){
             case ROWS:{
                 s+="(_)"+answers[0]+"\t\t(_)"+answers[1]+"\r\n";

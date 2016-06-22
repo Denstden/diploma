@@ -17,7 +17,7 @@ public class CheckboxQuestionBuilder extends AbstractQuestionBuilder{
 	@Override
 	public CheckboxQuestion build() {
 		CheckboxQuestion checkboxQuestion = new CheckboxQuestion();
-		checkboxQuestion.setQuestion(globalPreambula+" "+configData.getPreambula());
+		checkboxQuestion.setQuestion(globalPreamble +" "+configData.getPreamble());
 
 		FormatSettings formatSettings = new FormatSettings();
 		formatSettings.setType(FormatType.valueOf(configData.getFormatElements().getFormatStrategy().name()));

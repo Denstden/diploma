@@ -5,30 +5,31 @@ import java.util.List;
 import parser.config.question.question_types.AbstractQuestionConfigData;
 
 public class QuestionConfigData {
-    private List<AbstractQuestionConfigData> questionConfigDatas;
-    private String globalPreambula = "";
+	private List<AbstractQuestionConfigData> questionConfigDatas;
 
-    public List<AbstractQuestionConfigData> getQuestionConfigDatas() {
-        return questionConfigDatas;
-    }
+	private String globalPreamble = "";
 
-    public void setQuestionConfigDatas(List<AbstractQuestionConfigData> questionConfigDatas) {
-        this.questionConfigDatas = questionConfigDatas;
-    }
+	public List<AbstractQuestionConfigData> getQuestionConfigDatas() {
+		return questionConfigDatas;
+	}
 
-    public String getGlobalPreambula() {
-        return globalPreambula;
-    }
+	public void setQuestionConfigDatas(List<AbstractQuestionConfigData> questionConfigDatas) {
+		this.questionConfigDatas = questionConfigDatas;
+	}
 
-    public void setGlobalPreambula(String globalPreambula) {
-        this.globalPreambula = globalPreambula;
-    }
+	public String getGlobalPreamble() {
+		return globalPreamble;
+	}
 
-    @Override
-    public String toString() {
-        return "QuestionConfigData{" +
-                "questionConfigDatas=" + questionConfigDatas +
-                ", globalPreambula='" + globalPreambula + '\'' +
-                '}';
-    }
+	public void setGlobalPreamble(String globalPreamble) {
+		this.globalPreamble = globalPreamble;
+	}
+
+	@Override
+	public String toString() {
+		return "QuestionConfigData{" +
+				"questionConfigDatas=" + questionConfigDatas +
+				", globalPreamble='" + globalPreamble + '\'' +
+				'}';
+	}
 }

@@ -35,7 +35,7 @@ public class QuestionRadioButtonConfigData extends AbstractQuestionConfigData {
     public String toString() {
         return "QuestionCheckboxConfigData{" +
                 "hashtag=" + hashTag +
-                ", preambula=" + preambula +
+                ", preamble=" + preamble +
                 ", countAnswers=" + countAnswers +
                 ", sourceCorrectAnswers='" + correctAnswers + '\'' +
                 ", sourceIncorrectAnswers='" + incorrectAnswers + '\'' +

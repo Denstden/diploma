@@ -1,24 +1,24 @@
 <variant>::=<list_of_questions>
   <list_of_questions>::=<question>|<question><list_of_questions>
     <question>::=<question_type_1>|<question_type_2>|..
-        <question_type_1>::=<preambula>
+        <question_type_1>::=<preamble>
                             <count_answers>
                             <count_correct_answers>
                             <count_uncorrect_answers>
                             <source_correct_answers>
                             <source_uncorrect_answers>
                             <formating_elements>
-        <question_type_2>::=<preambula>
+        <question_type_2>::=<preamble>
                             <answer>
                             <formating_elements>
         <question_type_3>::=<preabmula>
                             <formating_elements>
-        <question_type_4>::=<preambula>
+        <question_type_4>::=<preamble>
                             <count_answers>
                             <source_correct_answers>
                             <source_uncorrect_answers>
                             <formating_elements>
-            <preambula>::=<sequence_of_words>"\n"
+            <preamble>::=<sequence_of_words>"\n"
                <sequence_of_words>::=<word><space><sequence_of_words>|<word>
                   <word>::=<sequence_of_symbols>|<symbol>
                   <space>::=" "

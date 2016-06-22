@@ -16,7 +16,7 @@ public class RadioButtonQuestionBuilder extends AbstractQuestionBuilder {
 	@Override
 	public RadioButtonQuestion build() {
 		RadioButtonQuestion radioButtonQuestion = new RadioButtonQuestion();
-		radioButtonQuestion.setQuestion(globalPreambula+" "+configData.getPreambula());
+		radioButtonQuestion.setQuestion(globalPreamble +" "+configData.getPreamble());
 
 		FormatSettings formatSettings = new FormatSettings();
 		formatSettings.setType(FormatType.valueOf(configData.getFormatElements().getFormatStrategy().name()));

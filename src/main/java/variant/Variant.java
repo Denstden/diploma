@@ -10,15 +10,15 @@ import question.AbstractQuestion;
 
 public class Variant{
     private String name;
-    private String preambula;
+    private String preamble;
     private List<AbstractQuestion> questionList;
 
     public Variant() {
     }
 
-    public Variant(String name, String preambula, List<AbstractQuestion> questionList){
+    public Variant(String name, String preamble, List<AbstractQuestion> questionList){
         this.name = name;
-        this.preambula = preambula;
+        this.preamble = preamble;
         this.questionList = questionList;
     }
 
@@ -30,12 +30,12 @@ public class Variant{
         this.name = name;
     }
 
-    public String getPreambula() {
-        return preambula;
+    public String getPreamble() {
+        return preamble;
     }
 
-    public void setPreambula(String preambula) {
-        this.preambula = preambula;
+    public void setPreamble(String preamble) {
+        this.preamble = preamble;
     }
 
     public List<AbstractQuestion> getQuestionList() {
@@ -53,7 +53,7 @@ public class Variant{
     @Override
     public String toString() {
         String res = "";
-        res += "Варіант " + name + "\r\n" + preambula;
+        res += "Варіант " + name + "\r\n" + preamble;
         int i=1;
         for (AbstractQuestion q : questionList) {
             res += i+". ";

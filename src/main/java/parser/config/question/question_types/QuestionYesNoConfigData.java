@@ -15,7 +15,7 @@ public class QuestionYesNoConfigData extends AbstractQuestionConfigData {
     public String toString() {
         return "QuestionCheckboxConfigData{" +
                 "hashtag=" + hashTag +
-                ", preambula=" + preambula +
+                ", preamble=" + preamble +
                 ", answer=" + answer +
                 ", formatElements=" + formatElements +
                 '}';

@@ -11,7 +11,7 @@ public class YesNoQuestionBuilder extends AbstractQuestionBuilder {
 	@Override
 	public YesNoQuestion build() {
 		YesNoQuestion yesNoQuestion = new YesNoQuestion();
-		yesNoQuestion.setQuestion(globalPreambula+" "+configData.getPreambula());
+		yesNoQuestion.setQuestion(globalPreamble +" "+configData.getPreamble());
 
 		FormatSettings formatSettings = new FormatSettings();
 		formatSettings.setType(FormatType.valueOf(configData.getFormatElements().getFormatStrategy().name()));

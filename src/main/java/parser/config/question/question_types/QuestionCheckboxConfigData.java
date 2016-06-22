@@ -3,63 +3,67 @@ package parser.config.question.question_types;
 import java.util.List;
 
 public class QuestionCheckboxConfigData extends AbstractQuestionConfigData {
-    private Integer countAnswers;
-    private Integer countCorrectAnswers;
-    private Integer countIncorrectAnswers;
-    private List<String> correctAnswers;
-    private List<String> incorrectAnswers;
+	private Integer countAnswers;
 
-    public Integer getCountAnswers() {
-        return countAnswers;
-    }
+	private Integer countCorrectAnswers;
 
-    public void setCountAnswers(Integer countAnswers) {
-        this.countAnswers = countAnswers;
-    }
+	private Integer countIncorrectAnswers;
 
-    public Integer getCountCorrectAnswers() {
-        return countCorrectAnswers;
-    }
+	private List<String> correctAnswers;
 
-    public void setCountCorrectAnswers(Integer countCorrectAnswers) {
-        this.countCorrectAnswers = countCorrectAnswers;
-    }
+	private List<String> incorrectAnswers;
 
-    public Integer getCountIncorrectAnswers() {
-        return countIncorrectAnswers;
-    }
+	public Integer getCountAnswers() {
+		return countAnswers;
+	}
 
-    public void setCountIncorrectAnswers(Integer countIncorrectAnswers) {
-        this.countIncorrectAnswers = countIncorrectAnswers;
-    }
+	public void setCountAnswers(Integer countAnswers) {
+		this.countAnswers = countAnswers;
+	}
 
-    public List<String> getCorrectAnswers() {
-        return correctAnswers;
-    }
+	public Integer getCountCorrectAnswers() {
+		return countCorrectAnswers;
+	}
 
-    public void setCorrectAnswers(List<String> correctAnswers) {
-        this.correctAnswers = correctAnswers;
-    }
+	public void setCountCorrectAnswers(Integer countCorrectAnswers) {
+		this.countCorrectAnswers = countCorrectAnswers;
+	}
 
-    public List<String> getIncorrectAnswers() {
-        return incorrectAnswers;
-    }
+	public Integer getCountIncorrectAnswers() {
+		return countIncorrectAnswers;
+	}
 
-    public void setIncorrectAnswers(List<String> incorrectAnswers) {
-        this.incorrectAnswers = incorrectAnswers;
-    }
+	public void setCountIncorrectAnswers(Integer countIncorrectAnswers) {
+		this.countIncorrectAnswers = countIncorrectAnswers;
+	}
 
-    @Override
-    public String toString() {
-        return "QuestionCheckboxConfigData{" +
-                "hashtag=" + hashTag +
-                ", preambula=" + preambula +
-                ", countAnswers=" + countAnswers +
-                ", countCorrectAnswers=" + countCorrectAnswers +
-                ", countIncorrectAnswers=" + countIncorrectAnswers +
-                ", correctAnswers='" + correctAnswers + '\'' +
-                ", incorrectAnswers='" + incorrectAnswers + '\'' +
-                ", formatElements=" + formatElements +
-                '}';
-    }
+	public List<String> getCorrectAnswers() {
+		return correctAnswers;
+	}
+
+	public void setCorrectAnswers(List<String> correctAnswers) {
+		this.correctAnswers = correctAnswers;
+	}
+
+	public List<String> getIncorrectAnswers() {
+		return incorrectAnswers;
+	}
+
+	public void setIncorrectAnswers(List<String> incorrectAnswers) {
+		this.incorrectAnswers = incorrectAnswers;
+	}
+
+	@Override
+	public String toString() {
+		return "QuestionCheckboxConfigData{" +
+				"hashtag=" + hashTag +
+				", preamble=" + preamble +
+				", countAnswers=" + countAnswers +
+				", countCorrectAnswers=" + countCorrectAnswers +
+				", countIncorrectAnswers=" + countIncorrectAnswers +
+				", correctAnswers='" + correctAnswers + '\'' +
+				", incorrectAnswers='" + incorrectAnswers + '\'' +
+				", formatElements=" + formatElements +
+				'}';
+	}
 }

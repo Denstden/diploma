@@ -1,3 +1,5 @@
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
@@ -16,10 +18,11 @@ public class Main {
      *     if (mod == 2)
      *          <path_to_result_folder>
      */
+    private static final Logger logger = LogManager.getLogger(Main.class);
     public static void main(String[] args) {
         Parser parser = new Parser();
         if (args.length < 2){
-            System.err.println("Program should has at least 2 program arguments.");
+            logger.warn("Program should has at least 2 program arguments.");
             return;
         }
         try {
@@ -33,7 +36,7 @@ public class Main {
                 test.toFile(args[2]);
             }
         } catch (IOException | SAXException | ParserConfigurationException e) {
-            e.printStackTrace();
+            logger.error(e.getStackTrace());
         }
     }
 }

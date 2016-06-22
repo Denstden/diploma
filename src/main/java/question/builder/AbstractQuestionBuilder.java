@@ -10,7 +10,7 @@ import question.AbstractQuestion;
 public abstract class AbstractQuestionBuilder {
 	protected QuestionData questionData;
 	protected AbstractQuestionConfigData configData;
-	protected String globalPreambula;
+	protected String globalPreamble;
 	public abstract AbstractQuestion build();
 
 	public QuestionData getQuestionData() {
@@ -29,11 +29,11 @@ public abstract class AbstractQuestionBuilder {
 		this.configData = configData;
 	}
 
-	public String getGlobalPreambula() {
-		return globalPreambula;
+	public String getGlobalPreamble() {
+		return globalPreamble;
 	}
 
-	public void setGlobalPreambula(String globalPreambula) {
-		this.globalPreambula = globalPreambula;
+	public void setGlobalPreamble(String globalPreamble) {
+		this.globalPreamble = globalPreamble;
 	}
 }

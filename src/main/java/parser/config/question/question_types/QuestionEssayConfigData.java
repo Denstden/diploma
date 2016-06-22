@@ -1,11 +1,11 @@
 package parser.config.question.question_types;
 
-public class QuestionEsseConfigData extends AbstractQuestionConfigData {
+public class QuestionEssayConfigData extends AbstractQuestionConfigData {
     @Override
     public String toString() {
         return "QuestionCheckboxConfigData{" +
                 "hashtag=" + hashTag +
-                ", preambula=" + preambula +
+                ", preamble=" + preamble +
                 ", formatElements=" + formatElements +
                 '}';
     }
