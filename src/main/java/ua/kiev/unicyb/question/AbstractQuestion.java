@@ -25,7 +25,7 @@ public abstract class AbstractQuestion {
 
 	public abstract String toString();
 
-	public void print(){
+	public void print() {
 		System.out.println(toString());
 	}
 
