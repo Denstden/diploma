@@ -26,14 +26,6 @@ public class RadioButtonQuestion extends AbstractQuestion {
         String s = "";
         s += question + "\r\n\t";
         switch (formatSettings.getType()) {
-        case COLUMN: {
-            for (int i = 0; i < answers.length; i++)
-                if (i == answers.length - 1)
-                    s += "(_) " + answers[i];
-                else
-                    s += "(_) " + answers[i] + "\r\n\t";
-            break;
-        }
         case COLUMNS: {
             int i;
             for (i = 1; i < answers.length + 1; i++) {
@@ -42,11 +34,6 @@ public class RadioButtonQuestion extends AbstractQuestion {
                     s += "\r\n\t";
                 }
             }
-            break;
-        }
-        case ROW: {
-            for (int i = 0; i < answers.length; i++)
-                s += "(_) " + answers[i] + "\t";
             break;
         }
         case ROWS: {
