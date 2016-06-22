@@ -1,17 +1,17 @@
 package question;
 
-import format.FormatSettings;
-
 import java.util.Arrays;
+
+import format.FormatSettings;
 
 public abstract class AbstractQuestion {
     protected String question;
     protected String[] answers;
     protected FormatSettings formatSettings;
 
-    abstract public String getString();
+    public abstract String toString();
 
-    abstract public void print();
+    public abstract void print();
 
     @Override
     public boolean equals(Object o) {

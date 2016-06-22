@@ -10,8 +10,8 @@
         <source_correct_answers>answers+.xml</source_correct_answers>
         <source_incorrect_answers>answers-.xml</source_incorrect_answers>
         <format_elements>
-            <strategy>rows</strategy>
-            <count>2</count>
+            <strategy>columns</strategy>
+            <count>3</count>
         </format_elements>
     </question_checkbox>
 </questions>

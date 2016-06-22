@@ -1,11 +1,11 @@
 package variant;
 
-import question.AbstractQuestion;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+
+import question.AbstractQuestion;
 
 
 public class Variant{
@@ -47,14 +47,20 @@ public class Variant{
     }
 
     public void print() {
-        System.out.println("Variant " + name);
-        System.out.print(preambula);
+        System.out.println(toString());
+    }
+
+    @Override
+    public String toString() {
+        String res = "";
+        res += "Варіант " + name + "\r\n" + preambula;
         int i=1;
         for (AbstractQuestion q : questionList) {
-            System.out.print(i+". ");
+            res += i+". ";
             i++;
-            q.print();
+            res += q.toString();
         }
+        return res;
     }
 
     public void toFile(String pathToFolder) throws IOException {
@@ -63,13 +69,7 @@ public class Variant{
             file.createNewFile();
         }
         PrintWriter out = new PrintWriter(file.getAbsoluteFile());
-        out.println("variant.Variant "+name);
-        out.print(preambula);
-        int i=1;
-        for (AbstractQuestion q : questionList) {
-            out.print(i+". "+q.getString());
-            i++;
-        }
+        out.print(toString());
         out.close();
     }
 }

@@ -1,75 +1,95 @@
 package variant;
 
-import exception.NoQuestionException;
-import exception.WrongDataQuestionException;
-import question.AbstractQuestion;
-import question.fabric.*;
-
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+
+import parser.config.question.QuestionConfigData;
+import parser.config.question.QuestionData;
+import parser.config.question.question_types.AbstractQuestionConfigData;
+import parser.config.question.question_types.QuestionCheckboxConfigData;
+import parser.config.question.question_types.QuestionEsseConfigData;
+import parser.config.question.question_types.QuestionRadioButtonConfigData;
+import parser.config.question.question_types.QuestionYesNoConfigData;
+import parser.config.variant.VariantConfig;
+import question.AbstractQuestion;
+import question.builder.CheckboxQuestionBuilder;
+import question.builder.EsseQuestionBuilder;
+import question.builder.RadioButtonQuestionBuilder;
+import question.builder.YesNoQuestionBuilder;
+import question.factory.CheckboxQuestionFactory;
+import question.factory.EsseQuestionFactory;
+import question.factory.RadioButtonQuestionFactory;
+import question.factory.YesNoQuestionFactory;
 
 public class VariantFabric {
-    private QF qf;
-    private int count;
-    private ArrayList<QuestionFabric> questionFabrics;
-    private String preambula;
-    private int countVariant;
-    private int countQuestionType1;
-    private int countQuestionType2;
-    private int countQuestionType3;
-    private int countQuestionType4;
+    private VariantConfig config;
+    private Random random = new Random();
 
-    public VariantFabric(String source, String variantPreambula, int count) throws FileNotFoundException, WrongDataQuestionException {
-        this.count = count;
-        preambula = variantPreambula;
-        countVariant = 1;
-        qf = new QF(source);
+    public VariantConfig getConfig() {
+        return config;
     }
 
-    public VariantFabric(String source, String variantPreambula, int countQuestionType1, int countQuestionType2, int countQuestionType3, int countQuestionType4) throws FileNotFoundException, WrongDataQuestionException {
-        this.countQuestionType1 = countQuestionType1;
-        this.countQuestionType2 = countQuestionType2;
-        this.countQuestionType3 = countQuestionType3;
-        this.countQuestionType4 = countQuestionType4;
-        preambula = variantPreambula;
-
-        countVariant = 1;
-        questionFabrics = new ArrayList<QuestionFabric>();
-        questionFabrics.add(new QuestionFabricType1(source));
-        questionFabrics.add(new QuestionFabricType2(source));
-        questionFabrics.add(new QuestionFabricType3(source));
-        questionFabrics.add(new QuestionFabricType4(source));
+    public void setConfig(VariantConfig config) {
+        this.config = config;
     }
 
-    public Variant gVariant() throws WrongDataQuestionException{
-        ArrayList<AbstractQuestion> arrayList= new ArrayList<>();
-        for (int i=0;i<count;i++){
-            AbstractQuestion question = qf.getQuestion();
-            if (!arrayList.contains(question))
-                arrayList.add(question);
-            else
-                count++;
+    public Variant getVariant(Integer number){
+        Variant variant = new Variant();
+        variant.setName(""+number);
+        String header = "";
+        for (String line : config.getHeader()) {
+            header += line+"\n";
         }
-        return new Variant(Integer.toString(countVariant++), preambula, arrayList);
-    }
+        variant.setPreambula(header);
+        List<AbstractQuestion> questions = new ArrayList<>();
+        CheckboxQuestionFactory checkboxQuestionFactory = new CheckboxQuestionFactory();
+        EsseQuestionFactory esseQuestionFactory = new EsseQuestionFactory();
+        YesNoQuestionFactory yesNoQuestionFactory = new YesNoQuestionFactory();
+        RadioButtonQuestionFactory radioButtonQuestionFactory = new RadioButtonQuestionFactory();
+        CheckboxQuestionBuilder checkboxQuestionBuilder = new CheckboxQuestionBuilder();
+        EsseQuestionBuilder esseQuestionBuilder = new EsseQuestionBuilder();
+        YesNoQuestionBuilder yesNoQuestionBuilder = new YesNoQuestionBuilder();
+        RadioButtonQuestionBuilder radioButtonQuestionBuilder = new RadioButtonQuestionBuilder();
+        QuestionConfigData questionConfigData;
+        String globalPreambula;
+        List<AbstractQuestionConfigData> configDatas;
+        AbstractQuestionConfigData configData;
 
-    public Variant getVariant() throws FileNotFoundException, NoQuestionException, WrongDataQuestionException {
-        ArrayList<AbstractQuestion> arrayList= new ArrayList<>();
-        for (int i=0;i< countQuestionType1;i++){
-            arrayList.add(questionFabrics.get(0).getQuestion());
+        for (QuestionData questionData: config.getQuestions()){
+            if (questionData.getQuestionConfigs().size()>1){
+                System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!");
+             //   return buildCombinedQuestion(questionData.getQuestionConfigs());
+            }
+            questionConfigData= questionData.getQuestionConfigs().get(0).getQuestionConfigData();
+            globalPreambula = questionConfigData.getGlobalPreambula();
+            configDatas = questionConfigData.getQuestionConfigDatas();
+            configData = configDatas.get(random.nextInt(configDatas.size()));
+            if (configData.getClass().equals(QuestionCheckboxConfigData.class)){
+                checkboxQuestionBuilder.setConfigData(configData);
+                checkboxQuestionBuilder.setGlobalPreambula(globalPreambula);
+                checkboxQuestionFactory.setQuestionBuilder(checkboxQuestionBuilder);
+                questions.add(checkboxQuestionFactory.getQuestion());
+            } else if (configData.getClass().equals(QuestionEsseConfigData.class)) {
+                esseQuestionBuilder.setConfigData(configData);
+                esseQuestionBuilder.setGlobalPreambula(globalPreambula);
+                esseQuestionFactory.setQuestionBuilder(esseQuestionBuilder);
+                questions.add(esseQuestionFactory.getQuestion());
+            } else if (configData.getClass().equals(QuestionYesNoConfigData.class)) {
+                yesNoQuestionBuilder.setConfigData(configData);
+                yesNoQuestionBuilder.setGlobalPreambula(globalPreambula);
+                yesNoQuestionFactory.setQuestionBuilder(yesNoQuestionBuilder);
+                questions.add(yesNoQuestionFactory.getQuestion());
+            } else if (configData.getClass().equals(QuestionRadioButtonConfigData.class)) {
+                radioButtonQuestionBuilder.setConfigData(configData);
+                radioButtonQuestionBuilder.setGlobalPreambula(globalPreambula);
+                radioButtonQuestionFactory.setQuestionBuilder(radioButtonQuestionBuilder);
+                questions.add(radioButtonQuestionFactory.getQuestion());
+            } else{
+                System.err.println("222!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            }
         }
-        for (int i=0;i< countQuestionType2;i++){
-            arrayList.add(questionFabrics.get(1).getQuestion());
-        }
-        for (int i=0;i< countQuestionType3;i++){
-            arrayList.add(questionFabrics.get(2).getQuestion());
-        }
-        for (int i=0;i< countQuestionType4;i++){
-            arrayList.add(questionFabrics.get(3).getQuestion());
-        }
-        Collections.shuffle(arrayList);
-
-        return new Variant(Integer.toString(countVariant++), preambula, arrayList);
+        variant.setQuestionList(questions);
+        return variant;
     }
 }

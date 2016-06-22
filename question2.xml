@@ -11,7 +11,7 @@
         </preambula>
         <format_elements>
             <strategy>rows</strategy>
-            <count>2</count>
+            <count>3</count>
         </format_elements>
     </question_esse>
 
@@ -22,7 +22,7 @@
         </preambula>
         <format_elements>
             <strategy>rows</strategy>
-            <count>2</count>
+            <count>3</count>
         </format_elements>
     </question_esse>
 
@@ -33,7 +33,7 @@
         </preambula>
         <format_elements>
             <strategy>rows</strategy>
-            <count>2</count>
+            <count>3</count>
         </format_elements>
     </question_esse>
 

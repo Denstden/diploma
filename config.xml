@@ -4,7 +4,7 @@
         <result_source>
             <path>home/result</path>
         </result_source>
-        <count_variants>4</count_variants>
+        <count_variants>8</count_variants>
         <test_header>
             <line>Test 1</line>
         </test_header>
@@ -12,8 +12,8 @@
 
     <variant>
         <variant_header>
-            <line>Name:</line>
-            <line>Group:</line>
+            <line>ПІБ:</line>
+            <line>Група:</line>
         </variant_header>
         <variant_footer>
             <line>Date:</line>
@@ -60,6 +60,30 @@
                 <!--<count>2</count>-->
                 <estimation>
                     <mark>2</mark>
+                    <strategy>all_nothing</strategy>
+                </estimation>
+            </question>
+
+            <question>
+                <sources>
+                    <source>
+                        <question_source>question3.xml</question_source>
+                    </source>
+                </sources>
+                <estimation>
+                    <mark>2</mark>
+                    <strategy>all_nothing</strategy>
+                </estimation>
+            </question>
+
+            <question>
+                <sources>
+                    <source>
+                        <question_source>question4.xml</question_source>
+                    </source>
+                </sources>
+                <estimation>
+                    <mark>1</mark>
                     <strategy>all_nothing</strategy>
                 </estimation>
             </question>

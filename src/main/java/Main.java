@@ -1,10 +1,14 @@
-import new_builder.TestBuilder;
-import new_parser2.ConfigDomParser;
-import new_parser2.config.test.TestConfigData;
 import org.xml.sax.SAXException;
 
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import util.FolderCleaner;
+import generator.Generator;
+import parser.ConfigDomParser;
+import parser.config.test.TestConfigData;
+import test.Test;
 
 public class Main {
     /**PROGRAM ARGUMENTS
@@ -22,14 +26,15 @@ public class Main {
      *                <CountQuestionsType4>
      */
     public static void main(String[] args) {
-
         ConfigDomParser parser = new ConfigDomParser();
         try {
             TestConfigData testConfigData = parser.parse("config.xml");
-            //System.out.println(testConfigData);
-            TestBuilder testBuilder = new TestBuilder();
-            testBuilder.setTestConfigData(testConfigData);
-            testBuilder.build();
+            Generator generator = new Generator();
+            generator.setTestConfigData(testConfigData);
+            Test test = generator.generate();
+            System.out.println(test.toString());
+            FolderCleaner.deleteAllFilesFolder("newFolder");
+            test.toFile("newFolder");
         } catch (IOException | SAXException | ParserConfigurationException e) {
             e.printStackTrace();
         }

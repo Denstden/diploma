@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<questions>
+    <global_preambula>Вибрати коректні оператори</global_preambula>
+
+    <question_radiobutton>
+        <hashtag>#operators</hashtag>
+        <count_answers>8</count_answers>
+        <source_correct_answers>answers4+.xml</source_correct_answers>
+        <source_incorrect_answers>answers4-.xml</source_incorrect_answers>
+        <format_elements>
+            <strategy>columns</strategy>
+            <count>4</count>
+        </format_elements>
+    </question_radiobutton>
+</questions>
