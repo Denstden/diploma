@@ -2,7 +2,7 @@ package question;
 
 import java.util.Arrays;
 
-import format.FormatSettings;
+import question.format.FormatSettings;
 
 public abstract class AbstractQuestion {
     protected String question;

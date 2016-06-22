@@ -1,6 +1,6 @@
 package question;
 
-import format.FormatSettings;
+import question.format.FormatSettings;
 
 public class RadioButtonQuestion extends AbstractQuestion {
 

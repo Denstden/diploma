@@ -1,7 +1,7 @@
 package question.builder;
 
-import format.FormatSettings;
-import format.FormatType;
+import question.format.FormatSettings;
+import question.format.FormatType;
 import question.YesNoQuestion;
 
 /**

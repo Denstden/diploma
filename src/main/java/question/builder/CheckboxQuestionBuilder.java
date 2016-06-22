@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import format.FormatSettings;
-import format.FormatType;
+import question.format.FormatSettings;
+import question.format.FormatType;
 import parser.config.question.question_types.QuestionCheckboxConfigData;
 import question.CheckboxQuestion;
 

@@ -1,4 +1,4 @@
-package format;
+package question.format;
 
 public class FormatSettings {
     private FormatType type;
