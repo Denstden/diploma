@@ -13,10 +13,8 @@ import parser.config.question.question_types.QuestionRadioButtonConfigData;
 import parser.config.question.question_types.QuestionYesNoConfigData;
 import parser.config.variant.VariantConfig;
 import question.AbstractQuestion;
-import question.builder.CheckboxQuestionBuilder;
-import question.builder.EsseQuestionBuilder;
-import question.builder.RadioButtonQuestionBuilder;
-import question.builder.YesNoQuestionBuilder;
+import question.builder.AbstractQuestionBuilder;
+import question.factory.AbstractQuestionFactory;
 import question.factory.CheckboxQuestionFactory;
 import question.factory.EsseQuestionFactory;
 import question.factory.RadioButtonQuestionFactory;
@@ -24,7 +22,15 @@ import question.factory.YesNoQuestionFactory;
 
 public class VariantFabric {
     private VariantConfig config;
+    private List<AbstractQuestionFactory> questionFactories = new ArrayList<>();
     private Random random = new Random();
+
+    public VariantFabric() {
+        questionFactories.add(new CheckboxQuestionFactory());
+        questionFactories.add(new EsseQuestionFactory());
+        questionFactories.add(new RadioButtonQuestionFactory());
+        questionFactories.add(new YesNoQuestionFactory());
+    }
 
     public VariantConfig getConfig() {
         return config;
@@ -43,53 +49,57 @@ public class VariantFabric {
         }
         variant.setPreambula(header);
         List<AbstractQuestion> questions = new ArrayList<>();
-        CheckboxQuestionFactory checkboxQuestionFactory = new CheckboxQuestionFactory();
-        EsseQuestionFactory esseQuestionFactory = new EsseQuestionFactory();
-        YesNoQuestionFactory yesNoQuestionFactory = new YesNoQuestionFactory();
-        RadioButtonQuestionFactory radioButtonQuestionFactory = new RadioButtonQuestionFactory();
-        CheckboxQuestionBuilder checkboxQuestionBuilder = new CheckboxQuestionBuilder();
-        EsseQuestionBuilder esseQuestionBuilder = new EsseQuestionBuilder();
-        YesNoQuestionBuilder yesNoQuestionBuilder = new YesNoQuestionBuilder();
-        RadioButtonQuestionBuilder radioButtonQuestionBuilder = new RadioButtonQuestionBuilder();
-        QuestionConfigData questionConfigData;
-        String globalPreambula;
-        List<AbstractQuestionConfigData> configDatas;
-        AbstractQuestionConfigData configData;
+        AbstractQuestion question;
 
-        for (QuestionData questionData: config.getQuestions()){
-            if (questionData.getQuestionConfigs().size()>1){
-                System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!");
-             //   return buildCombinedQuestion(questionData.getQuestionConfigs());
-            }
-            questionConfigData= questionData.getQuestionConfigs().get(0).getQuestionConfigData();
-            globalPreambula = questionConfigData.getGlobalPreambula();
-            configDatas = questionConfigData.getQuestionConfigDatas();
-            configData = configDatas.get(random.nextInt(configDatas.size()));
-            if (configData.getClass().equals(QuestionCheckboxConfigData.class)){
-                checkboxQuestionBuilder.setConfigData(configData);
-                checkboxQuestionBuilder.setGlobalPreambula(globalPreambula);
-                checkboxQuestionFactory.setQuestionBuilder(checkboxQuestionBuilder);
-                questions.add(checkboxQuestionFactory.getQuestion());
-            } else if (configData.getClass().equals(QuestionEsseConfigData.class)) {
-                esseQuestionBuilder.setConfigData(configData);
-                esseQuestionBuilder.setGlobalPreambula(globalPreambula);
-                esseQuestionFactory.setQuestionBuilder(esseQuestionBuilder);
-                questions.add(esseQuestionFactory.getQuestion());
-            } else if (configData.getClass().equals(QuestionYesNoConfigData.class)) {
-                yesNoQuestionBuilder.setConfigData(configData);
-                yesNoQuestionBuilder.setGlobalPreambula(globalPreambula);
-                yesNoQuestionFactory.setQuestionBuilder(yesNoQuestionBuilder);
-                questions.add(yesNoQuestionFactory.getQuestion());
-            } else if (configData.getClass().equals(QuestionRadioButtonConfigData.class)) {
-                radioButtonQuestionBuilder.setConfigData(configData);
-                radioButtonQuestionBuilder.setGlobalPreambula(globalPreambula);
-                radioButtonQuestionFactory.setQuestionBuilder(radioButtonQuestionBuilder);
-                questions.add(radioButtonQuestionFactory.getQuestion());
-            } else{
-                System.err.println("222!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        for (QuestionData questionData: config.getQuestions()) {
+            question = handleQuestionData(questionData);
+            if (question != null) {
+                questions.add(question);
             }
         }
         variant.setQuestionList(questions);
         return variant;
+    }
+
+    private AbstractQuestion handleQuestionData(QuestionData questionData){
+        AbstractQuestion question = null;
+        QuestionConfigData questionConfigData;
+        String globalPreambula;
+        List<AbstractQuestionConfigData> configDatas;
+        AbstractQuestionConfigData configData;
+        CheckboxQuestionFactory checkboxQuestionFactory = (CheckboxQuestionFactory) questionFactories.get(0);
+        EsseQuestionFactory esseQuestionFactory = (EsseQuestionFactory) questionFactories.get(1);
+        RadioButtonQuestionFactory radioButtonQuestionFactory = (RadioButtonQuestionFactory) questionFactories.get(2);
+        YesNoQuestionFactory yesNoQuestionFactory = (YesNoQuestionFactory) questionFactories.get(3);
+        if (questionData.getQuestionConfigs().size()>1){
+            System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!");
+            //   return buildCombinedQuestion(questionData.getQuestionConfigs());
+        }
+        questionConfigData= questionData.getQuestionConfigs().get(0).getQuestionConfigData();
+        globalPreambula = questionConfigData.getGlobalPreambula();
+        configDatas = questionConfigData.getQuestionConfigDatas();
+        configData = configDatas.get(random.nextInt(configDatas.size()));
+        if (configData.getClass().equals(QuestionCheckboxConfigData.class)){
+            initBuilder(checkboxQuestionFactory.getQuestionBuilder(), configData, globalPreambula);
+            question = checkboxQuestionFactory.getQuestion();
+        } else if (configData.getClass().equals(QuestionEsseConfigData.class)) {
+            initBuilder(esseQuestionFactory.getQuestionBuilder(), configData, globalPreambula);
+            question = esseQuestionFactory.getQuestion();
+        } else if (configData.getClass().equals(QuestionYesNoConfigData.class)) {
+            initBuilder(yesNoQuestionFactory.getQuestionBuilder(), configData, globalPreambula);
+            question = yesNoQuestionFactory.getQuestion();
+        } else if (configData.getClass().equals(QuestionRadioButtonConfigData.class)) {
+            initBuilder(radioButtonQuestionFactory.getQuestionBuilder(), configData, globalPreambula);
+            question = radioButtonQuestionFactory.getQuestion();
+        } else{
+            System.err.println("222!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        }
+        return question;
+    }
+
+
+    private void initBuilder(AbstractQuestionBuilder builder, AbstractQuestionConfigData configData, String preambula){
+        builder.setConfigData(configData);
+        builder.setGlobalPreambula(preambula);
     }
 }
