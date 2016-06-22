@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import ua.kiev.unicyb.question.format.FormatSettings;
-import ua.kiev.unicyb.question.format.FormatType;
+import javafx.util.Pair;
 import ua.kiev.unicyb.parser.config.question.question_types.QuestionRadioButtonConfigData;
 import ua.kiev.unicyb.question.RadioButtonQuestion;
+import ua.kiev.unicyb.question.format.FormatSettings;
+import ua.kiev.unicyb.question.format.FormatType;
 
 /**
  * @Author Denys Storozhenko.
@@ -23,11 +24,13 @@ public class RadioButtonQuestionBuilder extends AbstractQuestionBuilder {
 		formatSettings.setCount(configData.getFormatElements().getCount());
 		radioButtonQuestion.setFormatSettings(formatSettings);
 
-		radioButtonQuestion.setAnswers(buildRadioButtonAnswers((QuestionRadioButtonConfigData)configData));
+		Pair<String[], String[]> result = buildRadioButtonAnswers((QuestionRadioButtonConfigData)configData);
+		radioButtonQuestion.setAnswers(result.getKey());
+		radioButtonQuestion.setCorrectAnswers(result.getValue());
 		return radioButtonQuestion;
 	}
 
-	private String[] buildRadioButtonAnswers(QuestionRadioButtonConfigData configData) {
+	private Pair<String[], String[]> buildRadioButtonAnswers(QuestionRadioButtonConfigData configData) {
 		Integer count = configData.getCountAnswers();
 		String[] answers = new String[count];
 
@@ -35,6 +38,8 @@ public class RadioButtonQuestionBuilder extends AbstractQuestionBuilder {
 		List<String> correctAnswers = configData.getCorrectAnswers();
 		Collections.shuffle(correctAnswers);
 		answersList.add(correctAnswers.get(0));
+		String[] correctAnswer = new String[1];
+		correctAnswer[0] = correctAnswers.get(0);
 
 		List<String> inCorrectAnswers = configData.getIncorrectAnswers();
 		Collections.shuffle(inCorrectAnswers);
@@ -43,6 +48,6 @@ public class RadioButtonQuestionBuilder extends AbstractQuestionBuilder {
 		}
 
 		Collections.shuffle(answersList);
-		return answersList.toArray(answers);
+		return new Pair<>(answersList.toArray(answers), correctAnswer);
 	}
 }

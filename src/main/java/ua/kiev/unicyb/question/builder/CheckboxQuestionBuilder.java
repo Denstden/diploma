@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javafx.util.Pair;
 import ua.kiev.unicyb.question.format.FormatSettings;
 import ua.kiev.unicyb.question.format.FormatType;
 import ua.kiev.unicyb.parser.config.question.question_types.QuestionCheckboxConfigData;
@@ -24,11 +25,13 @@ public class CheckboxQuestionBuilder extends AbstractQuestionBuilder{
 		formatSettings.setCount(configData.getFormatElements().getCount());
 		checkboxQuestion.setFormatSettings(formatSettings);
 
-		checkboxQuestion.setAnswers(buildCheckboxAnswers((QuestionCheckboxConfigData)configData));
+		Pair<String[], String[]> result = buildCheckboxAnswers((QuestionCheckboxConfigData)configData);
+		checkboxQuestion.setAnswers(result.getKey());
+		checkboxQuestion.setCorrectAnswers(result.getValue());
 		return checkboxQuestion;
 	}
 
-	private String[] buildCheckboxAnswers(QuestionCheckboxConfigData configData){
+	private Pair<String[], String[]> buildCheckboxAnswers(QuestionCheckboxConfigData configData){
 		Integer count = configData.getCountAnswers();
 		String[] answers = new String[count];
 
@@ -39,6 +42,8 @@ public class CheckboxQuestionBuilder extends AbstractQuestionBuilder{
 		for (int i=0;i<configData.getCountCorrectAnswers();i++){
 			answersList.add(correctAnswers.get(i%correctAnswers.size()));
 		}
+		String[] correctAnswersResult = new String[answersList.size()];
+		answersList.toArray(correctAnswersResult);
 
 		List<String> inCorrectAnswers = configData.getIncorrectAnswers();
 		Collections.shuffle(inCorrectAnswers);
@@ -47,6 +52,6 @@ public class CheckboxQuestionBuilder extends AbstractQuestionBuilder{
 		}
 
 		Collections.shuffle(answersList);
-		return answersList.toArray(answers);
+		return new Pair<>(answersList.toArray(answers), correctAnswersResult);
 	}
 }

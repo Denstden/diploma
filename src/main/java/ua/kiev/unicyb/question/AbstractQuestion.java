@@ -9,6 +9,8 @@ public abstract class AbstractQuestion {
 
 	String[] answers;
 
+	String[] correctAnswers;
+
 	FormatSettings formatSettings;
 
 	public void setQuestion(String question) {
@@ -21,6 +23,14 @@ public abstract class AbstractQuestion {
 
 	public void setFormatSettings(FormatSettings formatSettings) {
 		this.formatSettings = formatSettings;
+	}
+
+	public String[] getCorrectAnswers() {
+		return correctAnswers;
+	}
+
+	public void setCorrectAnswers(String[] correctAnswers) {
+		this.correctAnswers = correctAnswers;
 	}
 
 	public abstract String toString();
