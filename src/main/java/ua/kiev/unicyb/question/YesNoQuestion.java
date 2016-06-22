@@ -1,25 +1,6 @@
 package ua.kiev.unicyb.question;
 
-import ua.kiev.unicyb.question.format.FormatSettings;
-
 public class YesNoQuestion extends AbstractQuestion {
-
-    public void setQuestion(String question) {
-        this.preamble = question;
-    }
-
-    public void setAnswers(String[] answers) {
-        this.answers = answers;
-    }
-
-    public void setFormatSettings(FormatSettings formatSettings) {
-        this.formatSettings = formatSettings;
-    }
-
-    @Override
-    public void print() {
-        System.out.print(toString());
-    }
 
     @Override
     public String toString() {

@@ -25,7 +25,9 @@ public abstract class AbstractQuestion {
 
 	public abstract String toString();
 
-	public abstract void print();
+	public void print(){
+		System.out.println(toString());
+	}
 
 	@Override
 	public boolean equals(Object o) {

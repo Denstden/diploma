@@ -3,11 +3,6 @@ package ua.kiev.unicyb.question;
 public class CheckboxQuestion extends AbstractQuestion {
 
     @Override
-    public void print(){
-        System.out.print(toString());
-    }
-
-    @Override
     public String toString() {
         String s = "";
         s += preamble + "\r\n\t";
