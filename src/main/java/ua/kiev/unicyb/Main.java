@@ -27,13 +27,12 @@ public class Main {
 	private static final Logger logger = LogManager.getLogger(Main.class);
 
 	public static void main(String[] args) {
-		Parser parser = new Parser();
 		if (args.length < 2) {
 			logger.warn("Program should has at least 2 program arguments.");
 			return;
 		}
 		try {
-			TestConfigData testConfigData = parser.parse(args[1]);
+			TestConfigData testConfigData = Parser.parse(args[1]);
 			Generator generator = new Generator();
 			generator.setTestConfigData(testConfigData);
 			Test test = generator.generate();

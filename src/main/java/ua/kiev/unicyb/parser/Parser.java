@@ -30,7 +30,7 @@ import ua.kiev.unicyb.parser.config.variant.VariantConfig;
 
 public class Parser {
 
-	public TestConfigData parse(String fileName) throws IOException, SAXException, ParserConfigurationException {
+	public static TestConfigData parse(String fileName) throws IOException, SAXException, ParserConfigurationException {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
 		factory.setNamespaceAware(true);
