@@ -27,7 +27,7 @@ import parser.config.test.TestConfigData;
 import parser.config.variant.Estimation;
 import parser.config.variant.VariantConfig;
 
-public class ConfigDomParser {
+public class Parser {
 
 	public TestConfigData parse(String fileName) throws IOException, SAXException, ParserConfigurationException {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();

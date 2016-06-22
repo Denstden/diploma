@@ -6,7 +6,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import util.FolderCleaner;
 import generator.Generator;
-import parser.ConfigDomParser;
+import parser.Parser;
 import parser.config.test.TestConfigData;
 import test.Test;
 
@@ -26,7 +26,7 @@ public class Main {
      *                <CountQuestionsType4>
      */
     public static void main(String[] args) {
-        ConfigDomParser parser = new ConfigDomParser();
+        Parser parser = new Parser();
         try {
             TestConfigData testConfigData = parser.parse("config.xml");
             Generator generator = new Generator();
