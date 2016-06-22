@@ -20,12 +20,12 @@ import question.factory.EsseQuestionFactory;
 import question.factory.RadioButtonQuestionFactory;
 import question.factory.YesNoQuestionFactory;
 
-public class VariantFabric {
+public class VariantFactory {
     private VariantConfig config;
     private List<AbstractQuestionFactory> questionFactories = new ArrayList<>();
     private Random random = new Random();
 
-    public VariantFabric() {
+    public VariantFactory() {
         questionFactories.add(new CheckboxQuestionFactory());
         questionFactories.add(new EsseQuestionFactory());
         questionFactories.add(new RadioButtonQuestionFactory());
