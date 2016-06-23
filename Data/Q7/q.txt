@@ -1,9 +1,0 @@
-type1
-Quest7?
-4
-3
-1
-+.txt
--.txt
-rows
-2

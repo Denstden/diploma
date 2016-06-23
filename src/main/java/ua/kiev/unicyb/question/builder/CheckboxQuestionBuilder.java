@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import javafx.util.Pair;
+import ua.kiev.unicyb.question.answers.QuestionAnswers;
 import ua.kiev.unicyb.question.format.FormatSettings;
 import ua.kiev.unicyb.question.format.FormatType;
 import ua.kiev.unicyb.parser.config.question.question_types.QuestionCheckboxConfigData;
@@ -26,8 +27,10 @@ public class CheckboxQuestionBuilder extends AbstractQuestionBuilder{
 		checkboxQuestion.setFormatSettings(formatSettings);
 
 		Pair<String[], String[]> result = buildCheckboxAnswers((QuestionCheckboxConfigData)configData);
-		checkboxQuestion.setAnswers(result.getKey());
-		checkboxQuestion.setCorrectAnswers(result.getValue());
+		checkboxQuestion.setVariantsOfAnswers(result.getKey());
+		QuestionAnswers questionAnswers = new QuestionAnswers();
+		questionAnswers.setQuestionAnswers(result.getValue());
+		checkboxQuestion.setCorrectAnswers(questionAnswers);
 		return checkboxQuestion;
 	}
 

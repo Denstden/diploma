@@ -1,6 +1,0 @@
-type4
-Quest3type4?
-3
-+.txt
--.txt
-row

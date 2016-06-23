@@ -7,6 +7,7 @@ import java.util.List;
 import javafx.util.Pair;
 import ua.kiev.unicyb.parser.config.question.question_types.QuestionRadioButtonConfigData;
 import ua.kiev.unicyb.question.RadioButtonQuestion;
+import ua.kiev.unicyb.question.answers.QuestionAnswers;
 import ua.kiev.unicyb.question.format.FormatSettings;
 import ua.kiev.unicyb.question.format.FormatType;
 
@@ -25,8 +26,10 @@ public class RadioButtonQuestionBuilder extends AbstractQuestionBuilder {
 		radioButtonQuestion.setFormatSettings(formatSettings);
 
 		Pair<String[], String[]> result = buildRadioButtonAnswers((QuestionRadioButtonConfigData)configData);
-		radioButtonQuestion.setAnswers(result.getKey());
-		radioButtonQuestion.setCorrectAnswers(result.getValue());
+		radioButtonQuestion.setVariantsOfAnswers(result.getKey());
+		QuestionAnswers questionAnswers = new QuestionAnswers();
+		questionAnswers.setQuestionAnswers(result.getValue());
+		radioButtonQuestion.setCorrectAnswers(questionAnswers);
 		return radioButtonQuestion;
 	}
 

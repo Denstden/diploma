@@ -7,6 +7,7 @@ import java.util.List;
 
 import ua.kiev.unicyb.exception.CreatingFileException;
 import ua.kiev.unicyb.question.AbstractQuestion;
+import ua.kiev.unicyb.question.answers.QuestionAnswers;
 
 public class Variant {
 	private String name;
@@ -91,14 +92,19 @@ public class Variant {
 		String[] answers;
 		for (AbstractQuestion question : questionList){
 			res += i + ". ";
-			answers = question.getCorrectAnswers();
-			if (answers == null || answers.length == 0){
+			QuestionAnswers questionAnswers = question.getCorrectAnswers();
+			if (questionAnswers == null) {
 				res += "\r\n";
 			} else {
-				for (String answer : answers){
-					res += answer+ "; ";
+				answers = questionAnswers.getQuestionAnswers();
+				if (answers == null || answers.length == 0) {
+					res += "\r\n";
+				} else {
+					for (String answer : answers) {
+						res += answer + "; ";
+					}
+					res += "\r\n";
 				}
-				res += "\r\n";
 			}
 			i++;
 		}

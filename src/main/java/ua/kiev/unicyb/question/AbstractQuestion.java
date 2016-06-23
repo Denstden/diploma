@@ -2,14 +2,15 @@ package ua.kiev.unicyb.question;
 
 import java.util.Arrays;
 
+import ua.kiev.unicyb.question.answers.QuestionAnswers;
 import ua.kiev.unicyb.question.format.FormatSettings;
 
 public abstract class AbstractQuestion {
 	String preamble;
 
-	String[] answers;
+	String[] variantsOfAnswers;
 
-	String[] correctAnswers;
+	QuestionAnswers correctAnswers;
 
 	FormatSettings formatSettings;
 
@@ -17,19 +18,19 @@ public abstract class AbstractQuestion {
 		this.preamble = question;
 	}
 
-	public void setAnswers(String[] answers) {
-		this.answers = answers;
+	public void setVariantsOfAnswers(String[] variantsOfAnswers) {
+		this.variantsOfAnswers = variantsOfAnswers;
 	}
 
 	public void setFormatSettings(FormatSettings formatSettings) {
 		this.formatSettings = formatSettings;
 	}
 
-	public String[] getCorrectAnswers() {
+	public QuestionAnswers getCorrectAnswers() {
 		return correctAnswers;
 	}
 
-	public void setCorrectAnswers(String[] correctAnswers) {
+	public void setCorrectAnswers(QuestionAnswers correctAnswers) {
 		this.correctAnswers = correctAnswers;
 	}
 
@@ -54,7 +55,7 @@ public abstract class AbstractQuestion {
 	@Override
 	public int hashCode() {
 		int result = preamble != null ? preamble.hashCode() : 0;
-		result = 31 * result + (answers != null ? Arrays.hashCode(answers) : 0);
+		result = 31 * result + (variantsOfAnswers != null ? Arrays.hashCode(variantsOfAnswers) : 0);
 		result = 31 * result + (formatSettings != null ? formatSettings.hashCode() : 0);
 		return result;
 	}

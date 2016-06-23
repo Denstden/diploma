@@ -1,6 +1,0 @@
-type4
-Quest4type4?
-3
-+.txt
--.txt
-column

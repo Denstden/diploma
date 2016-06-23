@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+    <test>
+        <result_source>
+            <path>result</path>
+        </result_source>
+        <count_variants>10</count_variants>
+        <test_header>
+            <line>Модульна контрольна робота №1</line>
+        </test_header>
+    </test>
+
+    <variant>
+        <variant_header>
+            <line>ПІБ:</line>
+            <line>Група:</line>
+        </variant_header>
+        <variant_footer>
+            <line>Date:</line>
+        </variant_footer>
+        <points>3.5</points>
+        <questions>
+            <question>
+                <sources>
+                    <source>
+                        <question_source>data/questions/question1.xml</question_source>
+                    </source>
+                </sources>
+                <estimation>
+                    <mark>0.5</mark>
+                    <strategy>all_nothing</strategy>
+                </estimation>
+            </question>
+
+            <question>
+                <sources>
+                    <source>
+                        <question_source>data/questions/question2.xml</question_source>
+                    </source>
+                </sources>
+                <estimation>
+                    <mark>2</mark>
+                    <strategy>all_nothing</strategy>
+                </estimation>
+            </question>
+
+            <question>
+                <sources>
+                    <source>
+                        <question_source>data/questions/question3.xml</question_source>
+                    </source>
+                </sources>
+                <estimation>
+                    <mark>2</mark>
+                    <strategy>all_nothing</strategy>
+                </estimation>
+            </question>
+
+            <question>
+                <sources>
+                    <source>
+                        <question_source>data/questions/question4.xml</question_source>
+                    </source>
+                </sources>
+                <estimation>
+                    <mark>1</mark>
+                    <strategy>all_nothing</strategy>
+                </estimation>
+            </question>
+
+            <question>
+            <sources>
+                <source>
+                    <question_source>data/questions/question2.xml</question_source>
+                    <count_questions>2</count_questions>
+                </source>
+                <source>
+                    <question_source>data/questions/question3.xml</question_source>
+                    <count_questions>2</count_questions>
+                </source>
+            </sources>
+            <estimation>
+                <mark>1</mark>
+                <strategy>evenly</strategy>
+            </estimation>
+        </question>
+
+        </questions>
+    </variant>
+</config>
