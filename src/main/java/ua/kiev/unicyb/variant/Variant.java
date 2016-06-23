@@ -96,7 +96,7 @@ public class Variant {
 			if (questionAnswers == null) {
 				res += "\r\n";
 			} else {
-				answers = questionAnswers.getQuestionAnswers();
+				answers = questionAnswers.getAnswers();
 				if (answers == null || answers.length == 0) {
 					res += "\r\n";
 				} else {

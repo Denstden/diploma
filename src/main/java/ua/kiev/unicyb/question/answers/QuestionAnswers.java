@@ -4,20 +4,20 @@ package ua.kiev.unicyb.question.answers;
  * @Author Denys Storozhenko.
  */
 public class QuestionAnswers {
-	private String[] questionAnswers;
+	private String[] answers;
 
-	public String[] getQuestionAnswers() {
-		return questionAnswers;
+	public String[] getAnswers() {
+		return answers;
 	}
 
-	public void setQuestionAnswers(String[] questionAnswers) {
-		this.questionAnswers = questionAnswers;
+	public void setAnswers(String[] answers) {
+		this.answers = answers;
 	}
 
 	@Override
 	public String toString() {
 		String result = "";
-		for (String answer : questionAnswers) {
+		for (String answer : answers) {
 			result += answer + "; ";
 		}
 		return result;

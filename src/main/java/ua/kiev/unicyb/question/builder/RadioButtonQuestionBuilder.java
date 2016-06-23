@@ -28,7 +28,7 @@ public class RadioButtonQuestionBuilder extends AbstractQuestionBuilder {
 		Pair<String[], String[]> result = buildRadioButtonAnswers((QuestionRadioButtonConfigData)configData);
 		radioButtonQuestion.setVariantsOfAnswers(result.getKey());
 		QuestionAnswers questionAnswers = new QuestionAnswers();
-		questionAnswers.setQuestionAnswers(result.getValue());
+		questionAnswers.setAnswers(result.getValue());
 		radioButtonQuestion.setCorrectAnswers(questionAnswers);
 		return radioButtonQuestion;
 	}

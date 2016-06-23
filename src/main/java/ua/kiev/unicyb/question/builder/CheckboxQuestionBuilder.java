@@ -29,7 +29,7 @@ public class CheckboxQuestionBuilder extends AbstractQuestionBuilder{
 		Pair<String[], String[]> result = buildCheckboxAnswers((QuestionCheckboxConfigData)configData);
 		checkboxQuestion.setVariantsOfAnswers(result.getKey());
 		QuestionAnswers questionAnswers = new QuestionAnswers();
-		questionAnswers.setQuestionAnswers(result.getValue());
+		questionAnswers.setAnswers(result.getValue());
 		checkboxQuestion.setCorrectAnswers(questionAnswers);
 		return checkboxQuestion;
 	}
