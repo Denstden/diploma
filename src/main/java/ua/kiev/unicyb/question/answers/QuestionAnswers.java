@@ -17,7 +17,7 @@ public class QuestionAnswers {
 	@Override
 	public String toString() {
 		String result = "";
-		for (String answer : questionAnswers){
+		for (String answer : questionAnswers) {
 			result += answer + "; ";
 		}
 		return result;
