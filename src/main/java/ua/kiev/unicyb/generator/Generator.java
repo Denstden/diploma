@@ -3,6 +3,7 @@ package ua.kiev.unicyb.generator;
 import java.util.ArrayList;
 import java.util.List;
 
+import ua.kiev.unicyb.exception.UnsupportedQuestionTypeException;
 import ua.kiev.unicyb.variant.VariantFactory;
 import ua.kiev.unicyb.parser.config.test.TestConfigData;
 import ua.kiev.unicyb.parser.config.variant.VariantConfig;
@@ -16,7 +17,7 @@ public class Generator {
         this.testConfigData = testConfigData;
     }
 
-    public Test generate() {
+    public Test generate() throws UnsupportedQuestionTypeException {
         List<Variant> variants = new ArrayList<>();
         VariantConfig variantConfig = testConfigData.getVariantConfig();
         VariantFactory variantFactory = new VariantFactory();

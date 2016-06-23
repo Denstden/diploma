@@ -1,9 +1,12 @@
 package ua.kiev.unicyb.variant;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import ua.kiev.unicyb.exception.UnsupportedQuestionTypeException;
+import ua.kiev.unicyb.parser.config.question.QuestionConfig;
 import ua.kiev.unicyb.parser.config.question.QuestionConfigData;
 import ua.kiev.unicyb.parser.config.question.QuestionData;
 import ua.kiev.unicyb.parser.config.question.question_types.AbstractQuestionConfigData;
@@ -42,7 +45,7 @@ public class VariantFactory {
 		this.config = config;
 	}
 
-	public Variant getVariant(Integer number) {
+	public Variant getVariant(Integer number) throws UnsupportedQuestionTypeException {
 		Variant variant = new Variant();
 		variant.setName("" + number);
 		String header = "";
@@ -63,38 +66,56 @@ public class VariantFactory {
 		return variant;
 	}
 
-	private AbstractQuestion handleQuestionData(QuestionData questionData) {
+	private AbstractQuestion handleQuestionData(QuestionData questionData) throws UnsupportedQuestionTypeException {
 		AbstractQuestion question = null;
 		QuestionConfigData questionConfigData;
-		String globalPreambula;
+		String globalPreamble;
 		List<AbstractQuestionConfigData> configDatas;
 		AbstractQuestionConfigData configData;
+		if (questionData.getQuestionConfigs().size() > 1) {
+			List<AbstractQuestion> questions = new ArrayList<>();
+			for (int i = 0; i < questionData.getQuestionConfigs().size(); i++){
+				QuestionConfig questionConfig = questionData.getQuestionConfigs().get(i);
+				for (int j = 0; j < questionConfig.getCountOfQuestions(); j++) {
+					Integer rnd = random.nextInt(questionConfig.getCountOfQuestions());
+					questionConfigData = questionConfig.getQuestionConfigData();
+					globalPreamble = questionConfigData.getGlobalPreamble();
+					configData = questionConfigData.getQuestionConfigDatas().get(rnd);
+					questions.add(handleConfigData(globalPreamble, configData));
+				}
+			}
+			Collections.shuffle(questions);
+			return questions.get(0);
+		}
+		questionConfigData = questionData.getQuestionConfigs().get(0).getQuestionConfigData();
+		globalPreamble = questionConfigData.getGlobalPreamble();
+		configDatas = questionConfigData.getQuestionConfigDatas();
+		configData = configDatas.get(random.nextInt(configDatas.size()));
+		question = handleConfigData(globalPreamble, configData);
+		return question;
+	}
+
+	private AbstractQuestion handleConfigData(String globalPreamble, AbstractQuestionConfigData configData)
+			throws UnsupportedQuestionTypeException {
 		CheckboxQuestionFactory checkboxQuestionFactory = (CheckboxQuestionFactory) questionFactories.get(0);
 		EssayQuestionFactory essayQuestionFactory = (EssayQuestionFactory) questionFactories.get(1);
 		RadioButtonQuestionFactory radioButtonQuestionFactory = (RadioButtonQuestionFactory) questionFactories.get(2);
 		YesNoQuestionFactory yesNoQuestionFactory = (YesNoQuestionFactory) questionFactories.get(3);
-		if (questionData.getQuestionConfigs().size() > 1) {
-			System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!");
-			//   return buildCombinedQuestion(questionData.getQuestionConfigs());
-		}
-		questionConfigData = questionData.getQuestionConfigs().get(0).getQuestionConfigData();
-		globalPreambula = questionConfigData.getGlobalPreamble();
-		configDatas = questionConfigData.getQuestionConfigDatas();
-		configData = configDatas.get(random.nextInt(configDatas.size()));
+		AbstractQuestion question = null;
 		if (configData.getClass().equals(QuestionCheckboxConfigData.class)) {
-			initBuilder(checkboxQuestionFactory.getQuestionBuilder(), configData, globalPreambula);
+			initBuilder(checkboxQuestionFactory.getQuestionBuilder(), configData, globalPreamble);
 			question = checkboxQuestionFactory.getQuestion();
 		} else if (configData.getClass().equals(QuestionEssayConfigData.class)) {
-			initBuilder(essayQuestionFactory.getQuestionBuilder(), configData, globalPreambula);
+			initBuilder(essayQuestionFactory.getQuestionBuilder(), configData, globalPreamble);
 			question = essayQuestionFactory.getQuestion();
 		} else if (configData.getClass().equals(QuestionYesNoConfigData.class)) {
-			initBuilder(yesNoQuestionFactory.getQuestionBuilder(), configData, globalPreambula);
+			initBuilder(yesNoQuestionFactory.getQuestionBuilder(), configData, globalPreamble);
 			question = yesNoQuestionFactory.getQuestion();
 		} else if (configData.getClass().equals(QuestionRadioButtonConfigData.class)) {
-			initBuilder(radioButtonQuestionFactory.getQuestionBuilder(), configData, globalPreambula);
+			initBuilder(radioButtonQuestionFactory.getQuestionBuilder(), configData, globalPreamble);
 			question = radioButtonQuestionFactory.getQuestion();
 		} else {
-			System.err.println("222!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			throw new UnsupportedQuestionTypeException();
 		}
 		return question;
 	}

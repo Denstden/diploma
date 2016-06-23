@@ -26,30 +26,11 @@
                         <question_source>question1.xml</question_source>
                     </source>
                 </sources>
-                <!--<count>3</count>-->
                 <estimation>
                     <mark>0.5</mark>
                     <strategy>all_nothing</strategy>
                 </estimation>
             </question>
-
-            <!--<question>
-                <sources>
-                    <source>
-                        <question_source>home/question22.ini</question_source>
-                        <count_questions>3</count_questions>
-                    </source>
-                    <source>
-                        <question_source>home/question41.ini</question_source>
-                        <count_questions>2</count_questions>
-                    </source>
-                </sources>-->
-                <!--<count>3</count>-->
-                <!--<estimation>
-                    <mark>1</mark>
-                    <strategy>evenly</strategy>
-                </estimation>
-            </question>-->
 
             <question>
                 <sources>
@@ -57,7 +38,6 @@
                         <question_source>question2.xml</question_source>
                     </source>
                 </sources>
-                <!--<count>2</count>-->
                 <estimation>
                     <mark>2</mark>
                     <strategy>all_nothing</strategy>
@@ -87,6 +67,24 @@
                     <strategy>all_nothing</strategy>
                 </estimation>
             </question>
+
+            <question>
+                <sources>
+                    <source>
+                        <question_source>question2.xml</question_source>
+                        <count_questions>2</count_questions>
+                    </source>
+                    <source>
+                        <question_source>question3.xml</question_source>
+                        <count_questions>2</count_questions>
+                    </source>
+                </sources>
+            <count>3</count>
+            <estimation>
+                <mark>1</mark>
+                <strategy>evenly</strategy>
+            </estimation>
+        </question>
 
         </questions>
     </variant>

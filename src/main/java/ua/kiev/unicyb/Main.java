@@ -11,6 +11,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import ua.kiev.unicyb.exception.CreatingFileException;
 import ua.kiev.unicyb.exception.DeleteFileException;
 import ua.kiev.unicyb.exception.EmptyFolderException;
+import ua.kiev.unicyb.exception.UnsupportedQuestionTypeException;
 import ua.kiev.unicyb.generator.Generator;
 import ua.kiev.unicyb.parser.Parser;
 import ua.kiev.unicyb.parser.config.test.TestConfigData;
@@ -44,7 +45,8 @@ public class Main {
 					test.printCorrectAnswersToFile(args[3]);
 				}
 			}
-		} catch (IOException | SAXException | ParserConfigurationException | EmptyFolderException | DeleteFileException | CreatingFileException e) {
+		} catch (IOException | SAXException | ParserConfigurationException | EmptyFolderException | DeleteFileException
+				| CreatingFileException | UnsupportedQuestionTypeException e) {
 			logger.error(e.getMessage());
 		}
 	}
