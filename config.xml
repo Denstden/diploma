@@ -2,9 +2,9 @@
 <config>
     <test>
         <result_source>
-            <path>home/result</path>
+            <path>result</path>
         </result_source>
-        <count_variants>8</count_variants>
+        <count_variants>10</count_variants>
         <test_header>
             <line>Test 1</line>
         </test_header>
