@@ -14,6 +14,8 @@ public abstract class AbstractQuestion {
 
 	FormatSettings formatSettings;
 
+	static final int DEF_MAX_ANSWER_LENGTH = 15;
+
 	public void setQuestion(String question) {
 		this.preamble = question;
 	}

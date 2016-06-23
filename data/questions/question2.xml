@@ -27,6 +27,28 @@
     </question_esse>
 
     <question_esse>
+        <hashtag>#binom_seq</hashtag>
+        <preambula>
+            друкує послiдовнiсть бiномних коефiцiєнтiв C(n,k), k=n,n-1,...,m
+        </preambula>
+        <format_elements>
+            <strategy>rows</strategy>
+            <count>3</count>
+        </format_elements>
+    </question_esse>
+
+    <question_esse>
+        <hashtag>#binom_seq</hashtag>
+        <preambula>
+            друкує послiдовнiсть бiномних коефiцiєнтiв C(n,2k), k=0,1,...,n
+        </preambula>
+        <format_elements>
+            <strategy>rows</strategy>
+            <count>3</count>
+        </format_elements>
+    </question_esse>
+
+    <question_esse>
         <hashtag>#factiroal_seq</hashtag>
         <preambula>
             друкує послiдовнiсть (2k)!!/((k!)^{2}), k=1,...,n
@@ -41,6 +63,72 @@
         <hashtag>#factiroal_seq</hashtag>
         <preambula>
             друкує послiдовнiсть (2k)!!/(((k+1)!)((k-1)!)), k=2,...,n
+        </preambula>
+        <format_elements>
+            <strategy>rows</strategy>
+            <count>3</count>
+        </format_elements>
+    </question_esse>
+
+    <question_esse>
+        <hashtag>#factiroal_seq</hashtag>
+        <preambula>
+            друкує послiдовнiсть (2k+1)!!/((k!)^{2}), k=1,...,n
+        </preambula>
+        <format_elements>
+            <strategy>rows</strategy>
+            <count>3</count>
+        </format_elements>
+    </question_esse>
+
+    <question_esse>
+        <hashtag>#factiroal_seq</hashtag>
+        <preambula>
+            друкує послiдовнiсть (2k+1)!!/(((k+1)!)((k-1)!)), k=2,...,n
+        </preambula>
+        <format_elements>
+            <strategy>rows</strategy>
+            <count>3</count>
+        </format_elements>
+    </question_esse>
+
+    <question_esse>
+        <hashtag>#pow_sequence</hashtag>
+        <preambula>
+            заповнює масив послiдовними парними степенями (0,2,..., 2n) числа 3.1
+        </preambula>
+        <format_elements>
+            <strategy>rows</strategy>
+            <count>3</count>
+        </format_elements>
+    </question_esse>
+
+    <question_esse>
+        <hashtag>#pow_sequence</hashtag>
+        <preambula>
+            заповнює масив послiдовними непарними степенями (1,3,..., 2n+1) числа 3.1
+        </preambula>
+        <format_elements>
+            <strategy>rows</strategy>
+            <count>3</count>
+        </format_elements>
+    </question_esse>
+
+    <question_esse>
+        <hashtag>#pow_sequence</hashtag>
+        <preambula>
+            заповнює масив послiдовними парними степенями (0,2,..., 2n) числа -2.014
+        </preambula>
+        <format_elements>
+            <strategy>rows</strategy>
+            <count>3</count>
+        </format_elements>
+    </question_esse>
+
+    <question_esse>
+        <hashtag>#pow_sequence</hashtag>
+        <preambula>
+            заповнює масив послiдовними непарними степенями (1,3,..., 2n+1) числа 2.015
         </preambula>
         <format_elements>
             <strategy>rows</strategy>

@@ -71,12 +71,12 @@
             <question>
             <sources>
                 <source>
-                    <question_source>data/questions/question2.xml</question_source>
-                    <count_questions>2</count_questions>
+                    <question_source>data/questions/question5_1.xml</question_source>
+                    <count_questions>3</count_questions>
                 </source>
                 <source>
-                    <question_source>data/questions/question3.xml</question_source>
-                    <count_questions>2</count_questions>
+                    <question_source>data/questions/question5_2.xml</question_source>
+                    <count_questions>4</count_questions>
                 </source>
             </sources>
             <estimation>

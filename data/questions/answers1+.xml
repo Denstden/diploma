@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<variantsOfAnswers>
+<answers>
     <answer>
-        <line>line1+</line>
+        <line>123</line>
     </answer>
-
     <answer>
-        <line>line2+</line>
+        <line>while</line>
     </answer>
-
-</variantsOfAnswers>
+    <answer>
+        <line>cpp</line>
+    </answer>
+    <answer>
+        <line>"1,3"</line>
+    </answer>
+    <answer>
+        <line>FIFO</line>
+    </answer>
+    <answer>
+        <line>"1.1.1"</line>
+    </answer>
+    <answer>
+        <line>"1,3"</line>
+    </answer>
+    <answer>
+        <line>;</line>
+    </answer>
+    <answer>
+        <line>"1e3"</line>
+    </answer>
+    <answer>
+        <line>1.3</line>
+    </answer>
+</answers>

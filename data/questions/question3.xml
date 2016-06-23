@@ -25,4 +25,60 @@
             <strategy>columns</strategy>
         </format_elements>
     </question_yes_no>
+
+    <question_yes_no>
+        <preambula>22./3=22/3?</preambula>
+        <answer>Ні</answer>
+        <format_elements>
+            <strategy>columns</strategy>
+        </format_elements>
+    </question_yes_no>
+
+    <question_yes_no>
+        <preambula>11+0=11-0?</preambula>
+        <answer>Так</answer>
+        <format_elements>
+            <strategy>columns</strategy>
+        </format_elements>
+    </question_yes_no>
+
+    <question_yes_no>
+        <preambula>0.=0.?</preambula>
+        <answer>Так</answer>
+        <format_elements>
+            <strategy>columns</strategy>
+        </format_elements>
+    </question_yes_no>
+
+    <question_yes_no>
+        <preambula>11%-2=1?</preambula>
+        <answer>Так</answer>
+        <format_elements>
+            <strategy>columns</strategy>
+        </format_elements>
+    </question_yes_no>
+
+    <question_yes_no>
+        <preambula>-11%2=1?</preambula>
+        <answer>Ні</answer>
+        <format_elements>
+            <strategy>columns</strategy>
+        </format_elements>
+    </question_yes_no>
+
+    <question_yes_no>
+        <preambula>11*(-2)=2*(-11)?</preambula>
+        <answer>Так</answer>
+        <format_elements>
+            <strategy>columns</strategy>
+        </format_elements>
+    </question_yes_no>
+
+    <question_yes_no>
+        <preambula>a+(b+c)=(a+b)+c</preambula>
+        <answer>Так</answer>
+        <format_elements>
+            <strategy>columns</strategy>
+        </format_elements>
+    </question_yes_no>
 </questions>

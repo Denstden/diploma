@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<questions>
+    <global_preambula>
+        Написати функцію, що
+    </global_preambula>
+
+    <question_esse>
+        <hashtag>#arrays</hashtag>
+        <preambula>
+            обчислює середнє арифметичне послiдовностi цiлих, зображеної масивом
+        </preambula>
+        <format_elements>
+            <strategy>rows</strategy>
+            <count>4</count>
+        </format_elements>
+    </question_esse>
+
+    <question_esse>
+        <hashtag>#arrays</hashtag>
+        <preambula>
+            обчислює кiлькiсть додатних елементiв послiдовностi дiйсних, зображеної масивом
+        </preambula>
+        <format_elements>
+            <strategy>rows</strategy>
+            <count>4</count>
+        </format_elements>
+    </question_esse>
+
+    <question_esse>
+        <hashtag>#arrays</hashtag>
+        <preambula>
+            записує в масив n випадкових цiлих
+        </preambula>
+        <format_elements>
+            <strategy>rows</strategy>
+            <count>3</count>
+        </format_elements>
+    </question_esse>
+
+    <question_esse>
+        <hashtag>#arrays</hashtag>
+        <preambula>
+            копiює один масив, що зображує послiдовнiсть цiлих, в iнший
+        </preambula>
+        <format_elements>
+            <strategy>rows</strategy>
+            <count>3</count>
+        </format_elements>
+    </question_esse>
+</questions>
