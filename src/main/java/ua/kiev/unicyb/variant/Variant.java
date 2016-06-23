@@ -55,7 +55,7 @@ public class Variant {
 	@Override
 	public String toString() {
 		String res = "";
-		res += "Варіант " + name + "\r\n" + preamble;
+		res += preamble + "Варіант " + name + "\r\n";
 		int i = 1;
 		for (AbstractQuestion q : questionList) {
 			res += i + ". ";

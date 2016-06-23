@@ -26,6 +26,7 @@ public class Generator {
             variants.add(variantFactory.getVariant(i));
         }
         Test test = new Test();
+        test.setHeaders(testConfigData.getTestConfig().getHeader());
         test.setVariants(variants);
         return test;
     }

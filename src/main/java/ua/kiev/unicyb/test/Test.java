@@ -8,6 +8,15 @@ import ua.kiev.unicyb.variant.Variant;
 
 public class Test {
 	private List<Variant> variants;
+	private List<String> headers;
+
+	public List<String> getHeaders() {
+		return headers;
+	}
+
+	public void setHeaders(List<String> headers) {
+		this.headers = headers;
+	}
 
 	public List<Variant> getVariants() {
 		return variants;

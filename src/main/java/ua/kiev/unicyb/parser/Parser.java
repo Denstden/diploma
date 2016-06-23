@@ -54,6 +54,7 @@ public class Parser {
 		VariantConfig variantConfig = new VariantConfig();
 		List<String> variantHeader = new ArrayList<>();
 		Element variantHeaderElement = variantConfigElement.getChild("variant_header");
+		variantHeader.addAll(testHeaderElement.getChildren().stream().map(Element::getText).collect(Collectors.toList()));
 		variantHeader.addAll(variantHeaderElement.getChildren().stream().map(Element::getText).collect(Collectors.toList()));
 		variantConfig.setHeader(variantHeader);
 
