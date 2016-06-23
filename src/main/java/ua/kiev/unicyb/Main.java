@@ -22,7 +22,7 @@ public class Main {
 	 * PROGRAM ARGUMENTS
 	 * <mod> <path_to_config_xml>
 	 * if (mod == 2)
-	 * <path_to_result_folder>
+	 * <path_to_result_folder> [<path_to_folder_correct_answers>]
 	 */
 	private static final Logger logger = LogManager.getLogger(Main.class);
 
@@ -37,12 +37,15 @@ public class Main {
 			generator.setTestConfigData(testConfigData);
 			Test test = generator.generate();
 			System.out.println(test.toString());
-			if (Integer.valueOf(args[0]) == 1 && args.length >= 3) {
+			if (Integer.valueOf(args[0]) == 2 && args.length >= 3) {
 				FolderCleaner.deleteAllFilesFolder(args[2]);
 				test.toFile(args[2]);
+				if (args.length == 4) {
+					test.printCorrectAnswersToFile(args[3]);
+				}
 			}
 		} catch (IOException | SAXException | ParserConfigurationException | EmptyFolderException | DeleteFileException | CreatingFileException e) {
-			logger.error(e.getStackTrace());
+			logger.error(e.getMessage());
 		}
 	}
 }

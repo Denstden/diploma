@@ -30,4 +30,10 @@ public class Test {
 			variant.toFile(pathToFolder);
 		}
 	}
+
+	public void printCorrectAnswersToFile(String pathToFolder) throws IOException, CreatingFileException {
+		for (Variant variant : variants){
+			variant.printCorrectAnswersToFile(pathToFolder);
+		}
+	}
 }

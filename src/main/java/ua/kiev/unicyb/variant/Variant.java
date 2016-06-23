@@ -74,4 +74,34 @@ public class Variant {
 		out.print(toString());
 		out.close();
 	}
+
+	public void printCorrectAnswersToFile(String pathToFolder) throws CreatingFileException, IOException {
+		File file = new File(pathToFolder + "\\" + "Check_Variant_" + name + ".txt");
+		if (!file.exists() && !file.createNewFile()) {
+			throw new CreatingFileException();
+		}
+		PrintWriter out = new PrintWriter(file.getAbsoluteFile());
+		out.print(getCorrectAnswers());
+		out.close();
+	}
+
+	private String getCorrectAnswers(){
+		int i = 1;
+		String res = "";
+		String[] answers;
+		for (AbstractQuestion question : questionList){
+			res += i + ". ";
+			answers = question.getCorrectAnswers();
+			if (answers == null || answers.length == 0){
+				res += "\r\n";
+			} else {
+				for (String answer : answers){
+					res += answer+ "; ";
+				}
+				res += "\r\n";
+			}
+			i++;
+		}
+		return res;
+	}
 }

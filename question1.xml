@@ -7,8 +7,8 @@
         <count_answers>6</count_answers>
         <count_correct_answers>2</count_correct_answers>
         <count_incorrect_answers>4</count_incorrect_answers>
-        <source_correct_answers>answers+.xml</source_correct_answers>
-        <source_incorrect_answers>answers-.xml</source_incorrect_answers>
+        <source_correct_answers>answers1+.xml</source_correct_answers>
+        <source_incorrect_answers>answers1-.xml</source_incorrect_answers>
         <format_elements>
             <strategy>columns</strategy>
             <count>3</count>
