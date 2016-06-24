@@ -69,21 +69,33 @@
             </question>
 
             <question>
-            <sources>
-                <source>
-                    <question_source>data/questions/question5_1.xml</question_source>
-                    <count_questions>3</count_questions>
-                </source>
-                <source>
-                    <question_source>data/questions/question5_2.xml</question_source>
-                    <count_questions>4</count_questions>
-                </source>
-            </sources>
-            <estimation>
-                <mark>1</mark>
-                <strategy>evenly</strategy>
-            </estimation>
-        </question>
+                <sources>
+                    <source>
+                        <question_source>data/questions/question5_1.xml</question_source>
+                        <count_questions>3</count_questions>
+                    </source>
+                    <source>
+                        <question_source>data/questions/question5_2.xml</question_source>
+                        <count_questions>4</count_questions>
+                    </source>
+                </sources>
+                <estimation>
+                    <mark>1</mark>
+                    <strategy>evenly</strategy>
+                </estimation>
+            </question>
+
+            <question>
+                <sources>
+                    <source>
+                        <question_source>data/questions/question6.xml</question_source>
+                    </source>
+                </sources>
+                <estimation>
+                    <mark>0.5</mark>
+                    <strategy>evenly</strategy>
+                </estimation>
+            </question>
 
         </questions>
     </variant>
