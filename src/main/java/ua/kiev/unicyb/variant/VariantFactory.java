@@ -73,19 +73,7 @@ public class VariantFactory {
 		List<AbstractQuestionConfigData> configDatas;
 		AbstractQuestionConfigData configData;
 		if (questionData.getQuestionConfigs().size() > 1) {
-			List<AbstractQuestion> questions = new ArrayList<>();
-			for (int i = 0; i < questionData.getQuestionConfigs().size(); i++){
-				QuestionConfig questionConfig = questionData.getQuestionConfigs().get(i);
-				for (int j = 0; j < questionConfig.getCountOfQuestions(); j++) {
-					Integer rnd = random.nextInt(questionConfig.getCountOfQuestions());
-					questionConfigData = questionConfig.getQuestionConfigData();
-					globalPreamble = questionConfigData.getGlobalPreamble();
-					configData = questionConfigData.getQuestionConfigDatas().get(rnd);
-					questions.add(handleConfigData(globalPreamble, configData));
-				}
-			}
-			Collections.shuffle(questions);
-			return questions.get(0);
+			return handleCombinedQuestion(questionData);
 		}
 		questionConfigData = questionData.getQuestionConfigs().get(0).getQuestionConfigData();
 		globalPreamble = questionConfigData.getGlobalPreamble();
@@ -93,6 +81,25 @@ public class VariantFactory {
 		configData = configDatas.get(random.nextInt(configDatas.size()));
 		question = handleConfigData(globalPreamble, configData);
 		return question;
+	}
+
+	private AbstractQuestion handleCombinedQuestion(QuestionData questionData) throws UnsupportedQuestionTypeException {
+		QuestionConfigData questionConfigData;
+		String globalPreamble;
+		AbstractQuestionConfigData configData;
+		List<AbstractQuestion> questions = new ArrayList<>();
+		for (int i = 0; i < questionData.getQuestionConfigs().size(); i++){
+			QuestionConfig questionConfig = questionData.getQuestionConfigs().get(i);
+			for (int j = 0; j < questionConfig.getCountOfQuestions(); j++) {
+				Integer rnd = random.nextInt(questionConfig.getCountOfQuestions());
+				questionConfigData = questionConfig.getQuestionConfigData();
+				globalPreamble = questionConfigData.getGlobalPreamble();
+				configData = questionConfigData.getQuestionConfigDatas().get(rnd);
+				questions.add(handleConfigData(globalPreamble, configData));
+			}
+		}
+		Collections.shuffle(questions);
+		return questions.get(0);
 	}
 
 	private AbstractQuestion handleConfigData(String globalPreamble, AbstractQuestionConfigData configData)
