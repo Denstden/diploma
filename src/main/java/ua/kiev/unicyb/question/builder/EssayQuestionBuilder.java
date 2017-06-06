@@ -17,6 +17,7 @@ public class EssayQuestionBuilder extends AbstractQuestionBuilder {
 		formatSettings.setType(FormatType.valueOf(configData.getFormatElements().getFormatStrategy().name()));
 		formatSettings.setCount(configData.getFormatElements().getCount());
 		essayQuestion.setFormatSettings(formatSettings);
+		essayQuestion.setEstimation(estimation);
 		return essayQuestion;
 	}
 }

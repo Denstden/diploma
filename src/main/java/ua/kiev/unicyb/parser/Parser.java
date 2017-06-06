@@ -101,6 +101,8 @@ public class Parser {
 	private static class QuestionDomParser {
 		private static QuestionConfigData parse(String fileName)
 				throws ParserConfigurationException, IOException, SAXException {
+//			System.out.println(fileName);
+//			fileName = "D:/Univ/diploma/dipl/diploma/" + fileName;
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
 			factory.setNamespaceAware(true);

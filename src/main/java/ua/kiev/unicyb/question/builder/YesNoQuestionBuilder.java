@@ -26,6 +26,8 @@ public class YesNoQuestionBuilder extends AbstractQuestionBuilder {
 		correctAnswer[0] = ((QuestionYesNoConfigData)configData).getAnswer();
 		questionAnswers.setAnswers(correctAnswer);
 		yesNoQuestion.setCorrectAnswers(questionAnswers);
+
+		yesNoQuestion.setEstimation(estimation);
 		return yesNoQuestion;
 	}
 }

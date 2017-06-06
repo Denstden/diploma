@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javafx.util.Pair;
+
+import org.apache.commons.lang3.tuple.Pair;
 import ua.kiev.unicyb.question.answers.QuestionAnswers;
 import ua.kiev.unicyb.question.format.FormatSettings;
 import ua.kiev.unicyb.question.format.FormatType;
@@ -31,6 +32,8 @@ public class CheckboxQuestionBuilder extends AbstractQuestionBuilder{
 		QuestionAnswers questionAnswers = new QuestionAnswers();
 		questionAnswers.setAnswers(result.getValue());
 		checkboxQuestion.setCorrectAnswers(questionAnswers);
+
+		checkboxQuestion.setEstimation(estimation);
 		return checkboxQuestion;
 	}
 
@@ -55,6 +58,6 @@ public class CheckboxQuestionBuilder extends AbstractQuestionBuilder{
 		}
 
 		Collections.shuffle(answersList);
-		return new Pair<>(answersList.toArray(answers), correctAnswersResult);
+		return Pair.of(answersList.toArray(answers), correctAnswersResult);
 	}
 }

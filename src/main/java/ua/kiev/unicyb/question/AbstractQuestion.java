@@ -1,18 +1,29 @@
 package ua.kiev.unicyb.question;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import ua.kiev.unicyb.parser.config.variant.Estimation;
 import ua.kiev.unicyb.question.answers.QuestionAnswers;
 import ua.kiev.unicyb.question.format.FormatSettings;
 
-public abstract class AbstractQuestion {
+@JsonTypeInfo(include= JsonTypeInfo.As.PROPERTY, use= JsonTypeInfo.Id.NAME)
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public abstract class AbstractQuestion implements Serializable{
 	String preamble;
 
 	String[] variantsOfAnswers;
 
+	@JsonIgnore
 	QuestionAnswers correctAnswers;
 
 	FormatSettings formatSettings;
+
+	@JsonIgnore
+	Estimation estimation;
 
 	static final int DEF_MAX_ANSWER_LENGTH = 15;
 
@@ -40,6 +51,26 @@ public abstract class AbstractQuestion {
 
 	public void print() {
 		System.out.println(toString());
+	}
+
+	public String getPreamble() {
+		return preamble;
+	}
+
+	public String[] getVariantsOfAnswers() {
+		return variantsOfAnswers;
+	}
+
+	public FormatSettings getFormatSettings() {
+		return formatSettings;
+	}
+
+	public Estimation getEstimation() {
+		return estimation;
+	}
+
+	public void setEstimation(Estimation estimation) {
+		this.estimation = estimation;
 	}
 
 	@Override

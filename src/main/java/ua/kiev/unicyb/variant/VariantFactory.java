@@ -14,6 +14,7 @@ import ua.kiev.unicyb.parser.config.question.question_types.QuestionCheckboxConf
 import ua.kiev.unicyb.parser.config.question.question_types.QuestionEssayConfigData;
 import ua.kiev.unicyb.parser.config.question.question_types.QuestionRadioButtonConfigData;
 import ua.kiev.unicyb.parser.config.question.question_types.QuestionYesNoConfigData;
+import ua.kiev.unicyb.parser.config.variant.Estimation;
 import ua.kiev.unicyb.parser.config.variant.VariantConfig;
 import ua.kiev.unicyb.question.AbstractQuestion;
 import ua.kiev.unicyb.question.builder.AbstractQuestionBuilder;
@@ -72,6 +73,7 @@ public class VariantFactory {
 		String globalPreamble;
 		List<AbstractQuestionConfigData> configDatas;
 		AbstractQuestionConfigData configData;
+		Estimation estimation;
 		if (questionData.getQuestionConfigs().size() > 1) {
 			return handleCombinedQuestion(questionData);
 		}
@@ -79,7 +81,8 @@ public class VariantFactory {
 		globalPreamble = questionConfigData.getGlobalPreamble();
 		configDatas = questionConfigData.getQuestionConfigDatas();
 		configData = configDatas.get(random.nextInt(configDatas.size()));
-		question = handleConfigData(globalPreamble, configData);
+		estimation = questionData.getEstimation();
+		question = handleConfigData(globalPreamble, configData, estimation);
 		return question;
 	}
 
@@ -87,6 +90,7 @@ public class VariantFactory {
 		QuestionConfigData questionConfigData;
 		String globalPreamble;
 		AbstractQuestionConfigData configData;
+		Estimation estimation;
 		List<AbstractQuestion> questions = new ArrayList<>();
 		for (int i = 0; i < questionData.getQuestionConfigs().size(); i++){
 			QuestionConfig questionConfig = questionData.getQuestionConfigs().get(i);
@@ -95,14 +99,15 @@ public class VariantFactory {
 				questionConfigData = questionConfig.getQuestionConfigData();
 				globalPreamble = questionConfigData.getGlobalPreamble();
 				configData = questionConfigData.getQuestionConfigDatas().get(rnd);
-				questions.add(handleConfigData(globalPreamble, configData));
+				estimation = questionData.getEstimation();
+				questions.add(handleConfigData(globalPreamble, configData, estimation));
 			}
 		}
 		Collections.shuffle(questions);
 		return questions.get(0);
 	}
 
-	private AbstractQuestion handleConfigData(String globalPreamble, AbstractQuestionConfigData configData)
+	private AbstractQuestion handleConfigData(String globalPreamble, AbstractQuestionConfigData configData, Estimation estimation)
 			throws UnsupportedQuestionTypeException {
 		CheckboxQuestionFactory checkboxQuestionFactory = (CheckboxQuestionFactory) questionFactories.get(0);
 		EssayQuestionFactory essayQuestionFactory = (EssayQuestionFactory) questionFactories.get(1);
@@ -110,16 +115,16 @@ public class VariantFactory {
 		YesNoQuestionFactory yesNoQuestionFactory = (YesNoQuestionFactory) questionFactories.get(3);
 		AbstractQuestion question = null;
 		if (configData.getClass().equals(QuestionCheckboxConfigData.class)) {
-			initBuilder(checkboxQuestionFactory.getQuestionBuilder(), configData, globalPreamble);
+			initBuilder(checkboxQuestionFactory.getQuestionBuilder(), configData, globalPreamble, estimation);
 			question = checkboxQuestionFactory.getQuestion();
 		} else if (configData.getClass().equals(QuestionEssayConfigData.class)) {
-			initBuilder(essayQuestionFactory.getQuestionBuilder(), configData, globalPreamble);
+			initBuilder(essayQuestionFactory.getQuestionBuilder(), configData, globalPreamble, estimation);
 			question = essayQuestionFactory.getQuestion();
 		} else if (configData.getClass().equals(QuestionYesNoConfigData.class)) {
-			initBuilder(yesNoQuestionFactory.getQuestionBuilder(), configData, globalPreamble);
+			initBuilder(yesNoQuestionFactory.getQuestionBuilder(), configData, globalPreamble, estimation);
 			question = yesNoQuestionFactory.getQuestion();
 		} else if (configData.getClass().equals(QuestionRadioButtonConfigData.class)) {
-			initBuilder(radioButtonQuestionFactory.getQuestionBuilder(), configData, globalPreamble);
+			initBuilder(radioButtonQuestionFactory.getQuestionBuilder(), configData, globalPreamble, estimation);
 			question = radioButtonQuestionFactory.getQuestion();
 		} else {
 			throw new UnsupportedQuestionTypeException();
@@ -127,8 +132,9 @@ public class VariantFactory {
 		return question;
 	}
 
-	private void initBuilder(AbstractQuestionBuilder builder, AbstractQuestionConfigData configData, String preamble) {
+	private void initBuilder(AbstractQuestionBuilder builder, AbstractQuestionConfigData configData, String preamble, Estimation estimation) {
 		builder.setConfigData(configData);
 		builder.setGlobalPreamble(preamble);
+		builder.setEstimation(estimation);
 	}
 }

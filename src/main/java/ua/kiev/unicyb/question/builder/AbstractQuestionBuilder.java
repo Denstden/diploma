@@ -1,42 +1,42 @@
 package ua.kiev.unicyb.question.builder;
 
-import ua.kiev.unicyb.parser.config.question.QuestionData;
 import ua.kiev.unicyb.parser.config.question.question_types.AbstractQuestionConfigData;
+import ua.kiev.unicyb.parser.config.variant.Estimation;
 import ua.kiev.unicyb.question.AbstractQuestion;
 
 /**
  * @Author Denys Storozhenko.
  */
 public abstract class AbstractQuestionBuilder {
-	private QuestionData questionData;
+    Estimation estimation;
 
-	AbstractQuestionConfigData configData;
+    AbstractQuestionConfigData configData;
 
-	String globalPreamble;
+    String globalPreamble;
 
-	public abstract AbstractQuestion build();
+    public abstract AbstractQuestion build();
 
-	public QuestionData getQuestionData() {
-		return questionData;
-	}
+    public Estimation getEstimation() {
+        return estimation;
+    }
 
-	public void setQuestionData(QuestionData questionData) {
-		this.questionData = questionData;
-	}
+    public void setEstimation(Estimation estimation) {
+        this.estimation = estimation;
+    }
 
-	public AbstractQuestionConfigData getConfigData() {
-		return configData;
-	}
+    public AbstractQuestionConfigData getConfigData() {
+        return configData;
+    }
 
-	public void setConfigData(AbstractQuestionConfigData configData) {
-		this.configData = configData;
-	}
+    public void setConfigData(AbstractQuestionConfigData configData) {
+        this.configData = configData;
+    }
 
-	public String getGlobalPreamble() {
-		return globalPreamble;
-	}
+    public String getGlobalPreamble() {
+        return globalPreamble;
+    }
 
-	public void setGlobalPreamble(String globalPreamble) {
-		this.globalPreamble = globalPreamble;
-	}
+    public void setGlobalPreamble(String globalPreamble) {
+        this.globalPreamble = globalPreamble;
+    }
 }

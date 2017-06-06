@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javafx.util.Pair;
+import org.apache.commons.lang3.tuple.Pair;
 import ua.kiev.unicyb.parser.config.question.question_types.QuestionRadioButtonConfigData;
 import ua.kiev.unicyb.question.RadioButtonQuestion;
 import ua.kiev.unicyb.question.answers.QuestionAnswers;
@@ -30,6 +30,8 @@ public class RadioButtonQuestionBuilder extends AbstractQuestionBuilder {
 		QuestionAnswers questionAnswers = new QuestionAnswers();
 		questionAnswers.setAnswers(result.getValue());
 		radioButtonQuestion.setCorrectAnswers(questionAnswers);
+
+		radioButtonQuestion.setEstimation(estimation);
 		return radioButtonQuestion;
 	}
 
@@ -51,6 +53,6 @@ public class RadioButtonQuestionBuilder extends AbstractQuestionBuilder {
 		}
 
 		Collections.shuffle(answersList);
-		return new Pair<>(answersList.toArray(answers), correctAnswer);
+		return Pair.of(answersList.toArray(answers), correctAnswer);
 	}
 }

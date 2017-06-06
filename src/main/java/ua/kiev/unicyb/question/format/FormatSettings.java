@@ -1,6 +1,8 @@
 package ua.kiev.unicyb.question.format;
 
-public class FormatSettings {
+import java.io.Serializable;
+
+public class FormatSettings implements Serializable{
     private FormatType type;
     private int count;
     public void setType(FormatType t){
