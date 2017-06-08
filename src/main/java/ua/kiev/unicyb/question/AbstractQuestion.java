@@ -25,6 +25,9 @@ public abstract class AbstractQuestion implements Serializable{
 	@JsonIgnore
 	Estimation estimation;
 
+	@JsonIgnore
+	String hint;
+
 	static final int DEF_MAX_ANSWER_LENGTH = 15;
 
 	public void setQuestion(String question) {
@@ -73,23 +76,40 @@ public abstract class AbstractQuestion implements Serializable{
 		this.estimation = estimation;
 	}
 
+	public String getHint() {
+		return hint;
+	}
+
+	public void setHint(String hint) {
+		this.hint = hint;
+	}
+
 	@Override
 	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		AbstractQuestion question = (AbstractQuestion) o;
+
+		if (preamble != null ? !preamble.equals(question.preamble) : question.preamble != null) return false;
+		// Probably incorrect - comparing Object[] arrays with Arrays.equals
+		if (!Arrays.equals(variantsOfAnswers, question.variantsOfAnswers)) return false;
+		if (correctAnswers != null ? !correctAnswers.equals(question.correctAnswers) : question.correctAnswers != null)
 			return false;
-
-		AbstractQuestion question1 = (AbstractQuestion) o;
-
-		return preamble != null ? preamble.equals(question1.preamble) : question1.preamble == null;
+		if (formatSettings != null ? !formatSettings.equals(question.formatSettings) : question.formatSettings != null)
+			return false;
+		if (estimation != null ? !estimation.equals(question.estimation) : question.estimation != null) return false;
+		return hint != null ? hint.equals(question.hint) : question.hint == null;
 	}
 
 	@Override
 	public int hashCode() {
 		int result = preamble != null ? preamble.hashCode() : 0;
-		result = 31 * result + (variantsOfAnswers != null ? Arrays.hashCode(variantsOfAnswers) : 0);
+		result = 31 * result + Arrays.hashCode(variantsOfAnswers);
+		result = 31 * result + (correctAnswers != null ? correctAnswers.hashCode() : 0);
 		result = 31 * result + (formatSettings != null ? formatSettings.hashCode() : 0);
+		result = 31 * result + (estimation != null ? estimation.hashCode() : 0);
+		result = 31 * result + (hint != null ? hint.hashCode() : 0);
 		return result;
 	}
 }

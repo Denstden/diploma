@@ -16,6 +16,8 @@ public class Variant {
 
 	private List<AbstractQuestion> questionList;
 
+	private Double mark;
+
 	public Variant() {
 	}
 
@@ -51,6 +53,14 @@ public class Variant {
 
 	public void print() {
 		System.out.println(toString());
+	}
+
+	public Double getMark() {
+		return mark;
+	}
+
+	public void setMark(Double mark) {
+		this.mark = mark;
 	}
 
 	@Override

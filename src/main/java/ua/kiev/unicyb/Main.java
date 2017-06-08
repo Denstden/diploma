@@ -12,7 +12,7 @@ import ua.kiev.unicyb.exception.CreatingFileException;
 import ua.kiev.unicyb.exception.DeleteFileException;
 import ua.kiev.unicyb.exception.EmptyFolderException;
 import ua.kiev.unicyb.exception.UnsupportedQuestionTypeException;
-import ua.kiev.unicyb.generator.Generator;
+import ua.kiev.unicyb.generator.TestGenerator;
 import ua.kiev.unicyb.parser.Parser;
 import ua.kiev.unicyb.parser.config.test.TestConfigData;
 import ua.kiev.unicyb.test.Test;
@@ -33,10 +33,11 @@ public class Main {
 			return;
 		}
 		try {
-			TestConfigData testConfigData = Parser.parse(args[1]);
-			Generator generator = new Generator();
-			generator.setTestConfigData(testConfigData);
-			Test test = generator.generate();
+			Parser parser = new Parser();
+			TestConfigData testConfigData = parser.parse(args[1]);
+			TestGenerator testGenerator = new TestGenerator();
+			testGenerator.setTestConfigData(testConfigData);
+			Test test = testGenerator.generate();
 			System.out.println(test.toString());
 			if (Integer.valueOf(args[0]) == 2 && args.length >= 2) {
 				String sourceFolderPath = testConfigData.getTestConfig().getResultSource();

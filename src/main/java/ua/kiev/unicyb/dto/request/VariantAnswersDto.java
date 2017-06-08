@@ -1,5 +1,6 @@
-package ua.kiev.unicyb.dto;
+package ua.kiev.unicyb.dto.request;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,7 +9,7 @@ import java.util.Map;
  */
 public class VariantAnswersDto {
     private String variantName;
-    private Map<String, List<String>> answers;
+    private Map<String, List<String>> answers = new LinkedHashMap<>();
 
     public String getVariantName() {
         return variantName;
@@ -24,5 +25,13 @@ public class VariantAnswersDto {
 
     public void setAnswers(Map<String, List<String>> answers) {
         this.answers = answers;
+    }
+
+    @Override
+    public String toString() {
+        return "VariantAnswersDto{" +
+                "variantName='" + variantName + '\'' +
+                ", answers=" + answers +
+                '}';
     }
 }

@@ -9,6 +9,8 @@ public abstract class AbstractQuestionConfigData {
 
 	String hashTag;
 
+	String hint;
+
 	public FormatElements getFormatElements() {
 		return formatElements;
 	}
@@ -31,5 +33,13 @@ public abstract class AbstractQuestionConfigData {
 
 	public void setPreamble(String preamble) {
 		this.preamble = preamble;
+	}
+
+	public String getHint() {
+		return hint;
+	}
+
+	public void setHint(String hint) {
+		this.hint = hint;
 	}
 }

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <config>
-    <name>Самостійна робота №1</name>
+    <name>Самостійна робота №2</name>
     <test>
         <result_source>
             <path>result</path>
         </result_source>
-        <count_variants>10</count_variants>
+        <count_variants>20</count_variants>
         <test_header>
-            <line>Самостійна робота №1</line>
+            <line>Самостійна робота №2</line>
         </test_header>
     </test>
 
@@ -29,15 +29,11 @@
                 </sources>
                 <estimation>
                     <mark>0.5</mark>
-                    <strategy>with_fines</strategy>
+                    <strategy>all_nothing</strategy>
                 </estimation>
             </question>
 
             <question>
-                <hashtags>
-                    <hashtag>#factorial_seq</hashtag>
-                    <hashtag>#pow_sequence</hashtag>
-                </hashtags>
                 <sources>
                     <source>
                         <question_source>data/questions/question2.xml</question_source>

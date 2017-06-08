@@ -10,7 +10,7 @@ import ua.kiev.unicyb.parser.config.variant.VariantConfig;
 import ua.kiev.unicyb.test.Test;
 import ua.kiev.unicyb.variant.Variant;
 
-public class Generator {
+public class TestGenerator {
     private TestConfigData testConfigData;
 
     public void setTestConfigData(TestConfigData testConfigData) {

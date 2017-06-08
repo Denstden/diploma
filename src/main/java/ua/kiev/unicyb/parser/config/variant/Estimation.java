@@ -6,7 +6,8 @@ public class Estimation {
 
     public enum EstimationStrategy{
         ALL_NOTHING,
-        EVENLY
+        EVENLY,
+        WITH_FINES
     }
 
     public Double getMark() {

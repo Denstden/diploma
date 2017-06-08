@@ -19,6 +19,7 @@ public class YesNoQuestionBuilder extends AbstractQuestionBuilder {
 		formatSettings.setType(FormatType.valueOf(configData.getFormatElements().getFormatStrategy().name()));
 		formatSettings.setCount(configData.getFormatElements().getCount());
 		yesNoQuestion.setFormatSettings(formatSettings);
+		yesNoQuestion.setHint(configData.getHint());
 
 		yesNoQuestion.setVariantsOfAnswers(new String[]{"Так", "Ні"});
 		QuestionAnswers questionAnswers = new QuestionAnswers();

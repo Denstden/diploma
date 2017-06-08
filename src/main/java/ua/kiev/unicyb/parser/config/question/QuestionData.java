@@ -7,6 +7,7 @@ import ua.kiev.unicyb.parser.config.variant.Estimation;
 public class QuestionData {
     private List<QuestionConfig> questionConfigs;
     private Estimation estimation;
+    private List<String> hashtags;
 
     public List<QuestionConfig> getQuestionConfigs() {
         return questionConfigs;
@@ -24,11 +25,20 @@ public class QuestionData {
         this.estimation = estimation;
     }
 
+    public List<String> getHashtags() {
+        return hashtags;
+    }
+
+    public void setHashtags(List<String> hashtags) {
+        this.hashtags = hashtags;
+    }
+
     @Override
     public String toString() {
         return "QuestionData{" +
-                "estimation=" + estimation +
-                ", questionConfigs=" + questionConfigs +
+                "questionConfigs=" + questionConfigs +
+                ", estimation=" + estimation +
+                ", hashtags=" + hashtags +
                 '}';
     }
 }

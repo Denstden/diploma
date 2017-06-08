@@ -8,6 +8,7 @@
         <format_elements>
             <strategy>rows</strategy>
         </format_elements>
+        <hint>hint1</hint>
     </question_yes_no>
 
     <question_yes_no>
@@ -24,6 +25,7 @@
         <format_elements>
             <strategy>columns</strategy>
         </format_elements>
+        <hint>hint2</hint>
     </question_yes_no>
 
     <question_yes_no>
@@ -32,6 +34,7 @@
         <format_elements>
             <strategy>columns</strategy>
         </format_elements>
+        <hint>hint3</hint>
     </question_yes_no>
 
     <question_yes_no>
@@ -40,6 +43,7 @@
         <format_elements>
             <strategy>columns</strategy>
         </format_elements>
+        <hint>hint4</hint>
     </question_yes_no>
 
     <question_yes_no>
@@ -48,6 +52,7 @@
         <format_elements>
             <strategy>columns</strategy>
         </format_elements>
+        <hint>hint5</hint>
     </question_yes_no>
 
     <question_yes_no>
@@ -56,6 +61,7 @@
         <format_elements>
             <strategy>columns</strategy>
         </format_elements>
+        <hint>hint6</hint>
     </question_yes_no>
 
     <question_yes_no>
@@ -64,6 +70,7 @@
         <format_elements>
             <strategy>columns</strategy>
         </format_elements>
+        <hint>hint7</hint>
     </question_yes_no>
 
     <question_yes_no>
@@ -72,6 +79,7 @@
         <format_elements>
             <strategy>columns</strategy>
         </format_elements>
+        <hint>hint8</hint>
     </question_yes_no>
 
     <question_yes_no>
@@ -80,5 +88,6 @@
         <format_elements>
             <strategy>columns</strategy>
         </format_elements>
+        <hint>hint9</hint>
     </question_yes_no>
 </questions>

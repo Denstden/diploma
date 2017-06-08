@@ -5,6 +5,7 @@ import ua.kiev.unicyb.parser.config.variant.VariantConfig;
 public class TestConfigData {
     private TestConfig testConfig;
     private VariantConfig variantConfig;
+    private String name;
 
     public TestConfig getTestConfig() {
         return testConfig;
@@ -22,11 +23,20 @@ public class TestConfigData {
         this.variantConfig = variantConfig;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public String toString() {
         return "TestConfigData{" +
                 "testConfig=" + testConfig +
                 ", variantConfig=" + variantConfig +
+                ", name='" + name + '\'' +
                 '}';
     }
 }

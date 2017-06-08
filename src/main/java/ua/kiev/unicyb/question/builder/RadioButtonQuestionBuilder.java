@@ -24,6 +24,7 @@ public class RadioButtonQuestionBuilder extends AbstractQuestionBuilder {
 		formatSettings.setType(FormatType.valueOf(configData.getFormatElements().getFormatStrategy().name()));
 		formatSettings.setCount(configData.getFormatElements().getCount());
 		radioButtonQuestion.setFormatSettings(formatSettings);
+		radioButtonQuestion.setHint(configData.getHint());
 
 		Pair<String[], String[]> result = buildRadioButtonAnswers((QuestionRadioButtonConfigData)configData);
 		radioButtonQuestion.setVariantsOfAnswers(result.getKey());

@@ -4,6 +4,8 @@ import ua.kiev.unicyb.parser.config.question.question_types.AbstractQuestionConf
 import ua.kiev.unicyb.parser.config.variant.Estimation;
 import ua.kiev.unicyb.question.AbstractQuestion;
 
+import java.util.List;
+
 /**
  * @Author Denys Storozhenko.
  */

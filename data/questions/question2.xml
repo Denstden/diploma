@@ -49,7 +49,7 @@
     </question_esse>
 
     <question_esse>
-        <hashtag>#factiroal_seq</hashtag>
+        <hashtag>#factorial_seq</hashtag>
         <preambula>
             друкує послiдовнiсть (2k)!!/((k!)^{2}), k=1,...,n
         </preambula>
@@ -60,7 +60,7 @@
     </question_esse>
 
     <question_esse>
-        <hashtag>#factiroal_seq</hashtag>
+        <hashtag>#factorial_seq</hashtag>
         <preambula>
             друкує послiдовнiсть (2k)!!/(((k+1)!)((k-1)!)), k=2,...,n
         </preambula>
@@ -71,7 +71,7 @@
     </question_esse>
 
     <question_esse>
-        <hashtag>#factiroal_seq</hashtag>
+        <hashtag>#factorial_seq</hashtag>
         <preambula>
             друкує послiдовнiсть (2k+1)!!/((k!)^{2}), k=1,...,n
         </preambula>
@@ -82,7 +82,7 @@
     </question_esse>
 
     <question_esse>
-        <hashtag>#factiroal_seq</hashtag>
+        <hashtag>#factorial_seq</hashtag>
         <preambula>
             друкує послiдовнiсть (2k+1)!!/(((k+1)!)((k-1)!)), k=2,...,n
         </preambula>

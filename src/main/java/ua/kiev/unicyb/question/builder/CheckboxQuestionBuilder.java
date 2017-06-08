@@ -26,6 +26,7 @@ public class CheckboxQuestionBuilder extends AbstractQuestionBuilder{
 		formatSettings.setType(FormatType.valueOf(configData.getFormatElements().getFormatStrategy().name()));
 		formatSettings.setCount(configData.getFormatElements().getCount());
 		checkboxQuestion.setFormatSettings(formatSettings);
+		checkboxQuestion.setHint(configData.getHint());
 
 		Pair<String[], String[]> result = buildCheckboxAnswers((QuestionCheckboxConfigData)configData);
 		checkboxQuestion.setVariantsOfAnswers(result.getKey());
